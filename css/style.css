@@ -7,7 +7,7 @@ body {
 }
 
 .gradient-banner .img-fluid {
-  max-width: 70%;
+  max-width: 100%;
   height: auto;
 }
 
@@ -1154,6 +1154,44 @@ button:focus,
   }
 }
 
+/* === PDF Simple Classy Button === */
+.pdf-card {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.pdf-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #1e40af; /* biru elegan */
+}
+
+.pdf-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #2563eb; /* biru solid */
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.pdf-button img {
+  width: 28px;
+  height: auto;
+}
+
+.pdf-button:hover {
+  background: #1d4ed8; /* biru sedikit lebih gelap */
+  transform: translateY(-2px);
+}
+
 /* end roadmap */
 
 .feature .testimonial p {
@@ -2223,49 +2261,131 @@ hr {
   padding: 20px;
 }
 
+/* ============================
+   PRIVACY NAVIGATION - PREMIUM
+   ============================ */
 .privacy .privacy-nav {
   position: -webkit-sticky;
   position: sticky;
   top: 15px;
-  background: #fafafa;
-  padding: 30px 0;
+  background: #ffffffcc; /* semi-transparan */
+  backdrop-filter: blur(10px);
+  padding: 15px 25px;
   display: flex;
+  justify-content: center;
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+/* Saat scroll, kasih efek mengecil */
+.privacy .privacy-nav.scrolled {
+  padding: 10px 20px;
+  background: #ffffffee;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* List container */
+.privacy .privacy-nav ul {
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
 }
 
-.privacy .privacy-nav ul {
-  padding-left: 0;
-  margin-bottom: 0;
-}
-
+/* Hilangkan bullet */
 .privacy .privacy-nav ul li {
   list-style: none;
 }
 
+/* Link item */
 .privacy .privacy-nav ul li a {
-  font-size: 16px;
-  color: #757575;
-  padding: 10px 0;
-  font-weight: bold;
-  display: block;
+  position: relative;
+  font-size: 15px;
+  font-weight: 600;
+  color: #555;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  .privacy .privacy-nav ul li a {
-    font-size: 16px;
-    padding: 5px 0;
-  }
+/* Efek hover */
+.privacy .privacy-nav ul li a:hover {
+  background: #f0f4ff;
+  color: #1a73e8;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(26, 115, 232, 0.15);
 }
 
+/* Active link */
 .privacy .privacy-nav ul li a.active {
-  color: #000;
+  background: #1a73e8;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(26, 115, 232, 0.35);
+}
+
+/* Tambahan efek garis bawah animasi */
+.privacy .privacy-nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 60%;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.privacy .privacy-nav ul li a:hover::after,
+.privacy .privacy-nav ul li a.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .privacy .privacy-nav ul {
+    gap: 20px;
+  }
+  .privacy .privacy-nav ul li a {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
 }
 
 @media (max-width: 768px) {
   .privacy .privacy-nav {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    padding: 12px 16px;
+  }
+  .privacy .privacy-nav ul {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .privacy .privacy-nav ul li a {
+    font-size: 13px;
+    padding: 6px 12px;
   }
 }
+
+@media (max-width: 480px) {
+  .privacy .privacy-nav ul {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .privacy .privacy-nav ul li a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
 
 .privacy .block {
   background: #fff;
@@ -2308,7 +2428,8 @@ hr {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
-.video-container video {
+/* Pastikan iframe YouTube ikut menyesuaikan penuh */
+.video-container iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -2317,6 +2438,7 @@ hr {
   border: 0;
   border-radius: 10px;
 }
+
 
 .next-button {
   display: flex;
@@ -2684,4 +2806,81 @@ button:hover {
   padding: 5px 10px;
   border-radius: 5px;
   text-align: center;
+}
+
+/* ===== LIVE COURSE CARD PREMIUM STYLE (UPDATED IMAGE) ===== */
+
+.livecourse-card {
+  border-radius: 20px;
+  overflow: hidden;
+  background: #ffffff;
+  border: none;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.livecourse-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+.livecourse-card img {
+  width: 100%;
+  height: auto;        /* biar gambar tidak terpotong */
+  display: block;
+}
+
+/* Badge */
+.livecourse-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  padding: 6px 14px;
+  background: linear-gradient(45deg, #007bff, #00c6ff);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Body */
+.livecourse-card-body {
+  padding: 22px;
+}
+
+.livecourse-card-body h5 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.livecourse-info {
+  font-size: 15px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  color: #555;
+}
+
+.livecourse-info i {
+  margin-right: 8px;
+  color: #0069d9;
+}
+
+.livecourse-btn {
+  display: block;
+  width: 100%;
+  background: linear-gradient(45deg, #0069d9, #00a2ff);
+  padding: 12px 0;
+  border-radius: 14px;
+  color: #fff !important;
+  font-weight: 600;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.livecourse-btn:hover {
+  background: linear-gradient(45deg, #0055b4, #0088da);
 }

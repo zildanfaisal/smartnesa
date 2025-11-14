@@ -1,0 +1,171 @@
+/* === Base Style === */
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f3f4f6;
+  margin: 0;
+  padding: 0;
+  color: #111827;
+}
+
+/* Card Wrapper */
+.card {
+  border: none;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* Card Body */
+.card-body {
+  padding: 28px;
+}
+
+/* Heading */
+.card-body h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1e3a8a;
+}
+
+/* === Table === */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 15px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table thead {
+  background: linear-gradient(135deg, #1e40af, #3b82f6);
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.table thead th {
+  padding: 14px;
+  border: none;
+}
+
+.table tbody td {
+  padding: 14px;
+  vertical-align: middle;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Hover row effect */
+.table tbody tr {
+  transition: background 0.2s ease;
+}
+.table tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* === Buttons === */
+.btn {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+/* Upload (warning style) */
+.btn-warning {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(251,191,36,0.4);
+}
+.btn-warning:hover {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  transform: translateY(-2px);
+}
+
+/* Success */
+.btn-success {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(16,185,129,0.4);
+}
+.btn-success:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+}
+
+/* Danger */
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(239,68,68,0.4);
+}
+.btn-danger:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-2px);
+}
+
+/* Primary (Tambah Data) */
+.btn-primary {
+  background: linear-gradient(135deg, #1e40af, #3b82f6);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  transform: translateY(-2px);
+}
+
+/* === Responsive Table === */
+@media (max-width: 992px) {
+  .table thead {
+    display: none;
+  }
+  .table tbody, .table tr, .table td {
+    display: block;
+    width: 100%;
+  }
+  .table tr {
+    margin-bottom: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+  }
+  .table td {
+    padding: 12px 16px;
+    text-align: left;
+    border: none;
+    position: relative;
+  }
+  .table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    color: #374151;
+    text-transform: capitalize;
+  }
+}
+
+/* === Animation on Load === */
+.table tbody tr {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+.table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.table tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.table tbody tr:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
