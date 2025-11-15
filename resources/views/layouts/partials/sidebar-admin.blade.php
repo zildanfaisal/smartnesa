@@ -31,8 +31,6 @@
             <i class="ti-medall"></i> Certificate
         </a>
 
-       
-
         <!-- Link Logout -->
         <a href="{{ route('logout') }}"
         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

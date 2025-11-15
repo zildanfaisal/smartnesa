@@ -30,16 +30,6 @@ class AuthenticatedSessionController extends Controller
         /** @var \App\Models\User $user */
         $user = Auth::user();
 
-        // DEBUG: Uncomment ini untuk cek
-        dd([
-            'user' => $user->nama,
-            'email' => $user->email,
-            'role' => $user->role,
-            'isAdmin' => $user->isAdmin(),
-            'isMentor' => $user->isMentor(),
-            'isUser' => $user->isUser(),
-        ]);
-
         if ($user->isAdmin()) {
             return redirect()->intended(route('admin.index'));
         }
