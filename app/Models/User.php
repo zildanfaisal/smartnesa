@@ -124,4 +124,9 @@ class User extends Authenticatable
     {
         return $this->nama;
     }
+
+    public function essays()
+    {
+        return $this->hasMany(EssayFile::class);
+    }
 }

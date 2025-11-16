@@ -2,12 +2,12 @@
     <!-- User Info -->
     <div class="sidebar-header">
         <small>Welcome,</small>
-        <div class="user-name">{{ Auth::user()->name ?? 'Zidan' }}</div>
+        <div class="user-name">{{ Auth::user()->name ?? 'User' }}</div>
     </div>
 
     <!-- Navigation Menu -->
     <div class="sidebar-menu">
-        <a href="" class="{{ Request::is('dashboard') ? 'active' : '' }}">
+        <a href="{{ route('user.index') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">
             <i class="ti-layout-grid2"></i> Dashboard
         </a>
 
@@ -23,9 +23,12 @@
             <i class="ti-write"></i> My Quiz Attempts
         </a>
 
-        <a href="" class="{{ Request::is('projects*') ? 'active' : '' }}">
+       <a href="{{ route('user.project.index') }}"
+        class="{{ Request::routeIs('user.project.*') ? 'active' : '' }}">
             <i class="ti-briefcase"></i> My Project
         </a>
+
+
 
         <a href="" class="{{ Request::is('certificates*') ? 'active' : '' }}">
             <i class="ti-medall"></i> Certificate
@@ -36,7 +39,7 @@
             <i class="ti-shift-right"></i> Logout
         </a>
 
-        <form id="logout-form" action="" method="POST" class="d-none">
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf
         </form>
     </div>

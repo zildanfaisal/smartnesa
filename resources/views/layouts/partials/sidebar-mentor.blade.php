@@ -7,7 +7,7 @@
 
     <!-- Navigation Menu -->
     <div class="sidebar-menu">
-        <a href="" class="{{ Request::is('dashboard') ? 'active' : '' }}">
+        <a href="{{ route('mentor.index') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">
             <i class="ti-layout-grid2"></i> Dashboard
         </a>
 
@@ -23,8 +23,9 @@
             <i class="ti-write"></i> My Quiz Attempts
         </a>
 
-        <a href="" class="{{ Request::is('projects*') ? 'active' : '' }}">
-            <i class="ti-briefcase"></i> My Project
+         <a href="{{ route('mentor.project.index') }}"
+        class="{{ Request::routeIs('mentor.project.*') ? 'active' : '' }}">
+            <i class="ti-briefcase"></i> Student Project
         </a>
 
         <a href="" class="{{ Request::is('certificates*') ? 'active' : '' }}">

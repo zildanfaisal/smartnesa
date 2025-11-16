@@ -31,13 +31,23 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Mentor Dashboard
     Route::middleware(['role:mentor'])->prefix('mentor')->name('mentor.')->group(function () {
         Route::get('/', [MentorController::class, 'index'])->name('index');
-        // Add more mentor routes here
+        Route::get('/project', [MentorController::class, 'projectIndex'])->name('project.index');
+        Route::get('/project/{id}', [MentorController::class, 'projectShow'])->name('project.show');
+        Route::post('/project/{id}/comment', [MentorController::class, 'updateComment'])->name('project.comment');
+        Route::delete('/project/{id}/comment', [MentorController::class, 'deleteComment'])->name('project.comment.delete');
     });
 
     // User Dashboard
     Route::middleware(['role:user'])->prefix('dashboard')->name('user.')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
-        // Add more user routes here
+        Route::get('/project', [DashboardController::class, 'projectIndex'])->name('project.index');
+        Route::get('/project/create', [DashboardController::class, 'projectCreate'])->name('project.create');
+        Route::post('/project', [DashboardController::class, 'projectStore'])->name('project.store');
+        Route::get('/project/{id}', [DashboardController::class, 'projectShow'])->name('project.show');
+        Route::get('/project/{id}/edit', [DashboardController::class, 'projectEdit'])->name('project.edit');
+        Route::put('/project/{id}', [DashboardController::class, 'projectUpdate'])->name('project.update');
+        Route::delete('/project/{id}', [DashboardController::class, 'projectDestroy'])->name('project.destroy');
+
     });
 
     // Profile Routes (accessible by all roles)

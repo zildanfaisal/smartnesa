@@ -1,9 +1,7 @@
 @extends('layouts.dashboard')
-
-@section('title', 'Dashboard - Smartnesa')
+@section('title', 'Karya Esai - Smartnesa')
 
 @section('content')
-<!-- Hero Section -->
 <div class="hero-section" data-aos="fade-down">
     <div class="hero-content">
         <div class="hero-left">
@@ -11,72 +9,102 @@
                  alt="avatar" onerror="this.src='https://i.pravatar.cc/150?img=12'">
             <div class="hero-info">
                 <div class="hero-subtitle">Looking forward to learning</div>
-                <h1 class="hero-title">{{ Auth::user()->name ?? 'Siftiyan Abdullah Zidan Arzaqi' }}</h1>
+                <h1 class="hero-title">{{ Auth::user()->name ?? 'User' }}</h1>
                 <div class="hero-chips">
                     <span class="chip"><i class="ti-location-pin"></i> Universitas Negeri Surabaya</span>
                     <span class="chip"><i class="ti-id-badge"></i> S1 Sistem Informasi</span>
-                    <span class="chip"><i class="ti-book"></i> {{ $enrolledCount ?? 1 }} enrolled class active</span>
                 </div>
             </div>
-        </div>
-        <div class="hero-right">
-            <a href="" class="btn-start-learning">
-                <i class="ti-bolt"></i> START LEARNING
-            </a>
         </div>
     </div>
 </div>
 
-<!-- Stats Cards -->
-<div class="stats-container" data-aos="fade-up">
-    <div class="stat-card stat-enrolled">
-        <div class="stat-icon">
-            <i class="ti-book"></i>
-        </div>
-        <div class="stat-number">{{ $enrolledCourses ?? 30 }}</div>
-        <div class="stat-label">ENROLLED COURSES</div>
-    </div>
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="mb-0">Tabel Karya Esai</h4>
+                        <a href="{{ route('user.project.create') }}" class="btn btn-primary">
+                            <i class="ti-plus"></i> Tambah Essay
+                        </a>
+                    </div>
 
-    <div class="stat-card stat-active">
-        <div class="stat-icon">
-            <i class="ti-desktop"></i>
-        </div>
-        <div class="stat-number">{{ $activeCourses ?? 10 }}</div>
-        <div class="stat-label">ACTIVE COURSES</div>
-    </div>
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    @endif
 
-    <div class="stat-card stat-completed">
-        <div class="stat-icon">
-            <i class="ti-medall-alt"></i>
-        </div>
-        <div class="stat-number">{{ $completedCourses ?? 7 }}</div>
-        <div class="stat-label">COMPLETED COURSES</div>
-    </div>
-</div>
-
-<!-- Active Class Card -->
-<div class="active-class-section" data-aos="fade-up">
-    <div class="active-class-card">
-        <h2 class="section-title">Class Active</h2>
-
-        <div class="class-content">
-            <div class="class-thumbnail">
-                <img src="{{ $activeClass->thumbnail ?? asset('images/course-thumb.jpg') }}" alt="Course Thumbnail">
-            </div>
-
-            <div class="class-details">
-                <h3 class="class-title">{{ $activeClass->title ?? 'Kelas Esai Online' }}</h3>
-                <div class="class-rating">
-                    <i class="ti-star"></i>
-                    <i class="ti-star"></i>
-                    <i class="ti-star"></i>
-                    <i class="ti-star"></i>
-                    <i class="ti-star"></i>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle text-center">
+                            <thead class="table-light">
+                                <tr>
+                                    <th width="5%">No</th>
+                                    <th width="15%">Bab</th>
+                                    <th width="30%">Judul Esai</th>
+                                    <th width="20%">File PDF</th>
+                                    <th width="15%">Tanggal Upload</th>
+                                    <th width="15%">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($essays as $index => $essay)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $essay->essay_bab }}</td>
+                                        <td class="text-start">{{ $essay->essay_name }}</td>
+                                        <td>
+                                            <a href="{{ asset('storage/' . $essay->essay_file) }}"
+                                               target="_blank"
+                                               class="btn btn-sm btn-info">
+                                                <i class="ti-file"></i> Lihat PDF
+                                            </a>
+                                        </td>
+                                        <td>{{ $essay->created_at->format('d M Y') }}</td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <a href="{{ route('user.project.show', $essay->id) }}"
+                                                   class="btn btn-sm btn-success"
+                                                   title="Detail">
+                                                    <i class="ti-eye"></i>
+                                                </a>
+                                                <a href="{{ route('user.project.edit', $essay->id) }}"
+                                                   class="btn btn-sm btn-warning"
+                                                   title="Edit">
+                                                    <i class="ti-pencil"></i>
+                                                </a>
+                                                <form action="{{ route('user.project.destroy', $essay->id) }}"
+                                                      method="POST"
+                                                      onsubmit="return confirm('Yakin ingin menghapus essay ini?')"
+                                                      style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                            class="btn btn-sm btn-danger"
+                                                            title="Hapus">
+                                                        <i class="ti-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="6" class="text-center py-4">
+                                            <div class="text-muted">
+                                                <i class="ti-info-alt" style="font-size: 2rem;"></i>
+                                                <p class="mt-2">Belum ada data essay. Silakan tambah essay baru.</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <p class="class-lessons">Total lessons: <strong>{{ $activeClass->lessons_count ?? 12 }}</strong></p>
-                <a href="" class="btn-continue">
-                    Continue to Lesson
-                </a>
             </div>
         </div>
     </div>
@@ -368,5 +396,21 @@
             font-size: 24px;
         }
     }
+
+    .table-lg {
+    width: 100%;
+    font-size: 1rem;              /* Perbesar teks */
+    }
+
+    .table-lg th,
+    .table-lg td {
+        padding: 16px 20px !important;  /* Perbesar padding */
+        vertical-align: middle;
+    }
+
+    .card-body {
+        padding: 30px;  /* Buat isi kartu lebih luas */
+    }
+
 </style>
 @endpush
