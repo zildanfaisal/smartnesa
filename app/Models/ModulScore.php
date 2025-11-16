@@ -13,12 +13,23 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ModulScore extends Model
 {
-    //
+    protected $table = 'modul_score';
+
+    protected $fillable = [
+        'user_id',
+        'module_id',
+        'score',
+    ];
 
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function module()
+    {
+        return $this->belongsTo(Module::class);
     }
 
 }

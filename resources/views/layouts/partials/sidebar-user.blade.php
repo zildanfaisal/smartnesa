@@ -7,19 +7,19 @@
 
     <!-- Navigation Menu -->
     <div class="sidebar-menu">
-        <a href="" class="{{ Request::is('dashboard') ? 'active' : '' }}">
+        <a href="{{ route('user.index') }}" class="{{ request()->routeIs('user.index') ? 'active' : '' }}">
             <i class="ti-layout-grid2"></i> Dashboard
         </a>
 
-        <a href="" class="{{ Request::is('profile*') ? 'active' : '' }}">
+        <a href="{{ route('profile.edit') }}" class="{{ request()->routeIs('profile.*') ? 'active' : '' }}">
             <i class="ti-user"></i> My Profile
         </a>
 
-        <a href="" class="{{ Request::is('courses/enrolled*') ? 'active' : '' }}">
+        <a href="{{ route('user.courses.enrolled') }}" class="{{ request()->routeIs('user.courses.*') ? 'active' : '' }}">
             <i class="ti-book"></i> Enrolled Courses
         </a>
 
-        <a href="" class="{{ Request::is('quiz/attempts*') ? 'active' : '' }}">
+        <a href="{{ route('user.quiz.attempt.index') }}" class="{{ request()->routeIs('user.quiz.attempt.index') ? 'active' : '' }}">
             <i class="ti-write"></i> My Quiz Attempts
         </a>
 
@@ -31,12 +31,12 @@
             <i class="ti-medall"></i> Certificate
         </a>
 
-        <a href=""
+        <a href="{{ route('logout') }}"
            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="ti-shift-right"></i> Logout
         </a>
 
-        <form id="logout-form" action="" method="POST" class="d-none">
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf
         </form>
     </div>

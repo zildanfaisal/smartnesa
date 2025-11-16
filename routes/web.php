@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 
 // Frontend Routes
@@ -25,7 +26,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Admin Dashboard
     Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
-        // Add more admin routes here
+        // User management (admin only)
+        Route::get('/users/index', [AdminController::class, 'createIndex'])->name('users.index');
+        Route::get('/users/create', [AdminController::class, 'create'])->name('users.create');
+        Route::post('/users', [AdminController::class, 'store'])->name('users.store');
+        // Route to edit a user
+        Route::get('/users/{user}/edit', [AdminController::class, 'edit'])->name('users.edit');
+        // Route to update a user
+        Route::put('/users/{user}', [AdminController::class, 'update'])->name('users.update');
+        Route::delete('/users/{user}', [AdminController::class, 'destroy'])->name('users.destroy');
+
+        // Quiz Attempts (admin)
+        Route::prefix('quiz')->name('quiz.')->group(function () {
+            Route::get('/attempts', [QuizController::class, 'adminIndex'])->name('attempt.index');
+        });
     });
 
     // Mentor Dashboard
@@ -37,7 +51,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // User Dashboard
     Route::middleware(['role:user'])->prefix('dashboard')->name('user.')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
-        // Add more user routes here
+        // Courses routes for user
+        Route::prefix('courses')->name('courses.')->group(function () {
+            Route::view('/materi/1', 'user.courses.materi.materi1')->name('materi.1');
+            Route::view('/materi/2', 'user.courses.materi.materi2')->name('materi.2');
+            Route::post('/quiz/submit', [QuizController::class, 'submit'])->name('quiz.submit');
+        });
+        Route::get('/courses/enrolled', [DashboardController::class, 'enrolledCourses'])->name('courses.enrolled');
+
+        Route::prefix('quiz')->name('quiz.')->group(function () {
+            Route::get('/attempts', [QuizController::class, 'index'])->name('attempt.index');
+        });
     });
 
     // Profile Routes (accessible by all roles)
