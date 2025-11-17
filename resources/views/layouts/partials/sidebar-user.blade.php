@@ -45,8 +45,8 @@
         </a> -->
 
         {{-- My Project --}}
-        <a href="{{ route('user.portfolio.show', ['id' => Auth::id()]) }}" target="_blank" rel="noopener"
-           class="{{ request()->routeIs('user.portfolio.*') ? 'active' : '' }}">
+       <a href="{{ route('user.portfolio.show', ['user' => Auth::user()->username]) }}" target="_blank" rel="noopener"
+        class="{{ request()->routeIs('user.portfolio.*') ? 'active' : '' }}">
             <i class="ti-briefcase"></i> Portfolio
         </a>
 
