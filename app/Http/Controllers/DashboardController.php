@@ -3,22 +3,72 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\EssayFile;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use App\Models\Module;
 use Illuminate\Support\Facades\Auth;
+use App\Models\EssayFile;
+use App\Models\Module;
+use App\Models\ModulScore;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
       public function index()
     {
-        return view('user.index', [
-            'enrolledCourses' => 30,
-            'activeCourses' => 10,
-            'completedCourses' => 7,
-            'enrolledCount' => 1,
-        ]);
+        $user = Auth::user();
+
+        // Total Essays user
+        $totalEssays = EssayFile::where('user_id', $user->id)->count();
+
+        // Total Modules available
+        $totalModules = Module::where('is_active', true)->count();
+
+        // Average Score user dari modules_score
+        $averageScore = ModulScore::where('user_id', $user->id)->avg('score');
+        $averageScore = $averageScore ? number_format($averageScore, 1) : 0;
+
+        // Recent Essays (5 terbaru)
+        $recentEssays = EssayFile::where('user_id', $user->id)
+            ->latest()
+            ->take(5)
+            ->get();
+
+        // Essay Progress (berapa persen essay sudah ada comment)
+        $totalUserEssays = EssayFile::where('user_id', $user->id)->count();
+        $reviewedEssays = EssayFile::where('user_id', $user->id)
+            ->whereNotNull('comment')
+            ->where('comment', '!=', '')
+            ->count();
+        $essayProgress = $totalUserEssays > 0 ? round(($reviewedEssays / $totalUserEssays) * 100) : 0;
+
+        // Module Progress (berapa persen module sudah dikerjakan)
+        $completedModules = ModulScore::where('user_id', $user->id)
+            ->distinct('module_id')
+            ->count();
+        $moduleProgress = $totalModules > 0 ? round(($completedModules / $totalModules) * 100) : 0;
+
+        // Essay by Bab
+        $essayByBab = EssayFile::where('user_id', $user->id)
+            ->selectRaw('essay_bab, COUNT(*) as count')
+            ->groupBy('essay_bab')
+            ->pluck('count', 'essay_bab')
+            ->toArray();
+
+        // Available Modules (5 terbaru yang aktif)
+        $availableModules = Module::where('is_active', true)
+            ->orderBy('order')
+            ->take(6)
+            ->get();
+
+        return view('user.index', compact(
+            'totalEssays',
+            'totalModules',
+            'averageScore',
+            'recentEssays',
+            'essayProgress',
+            'moduleProgress',
+            'essayByBab',
+            'availableModules'
+        ));
     }
 
     public function projectIndex()
@@ -149,8 +199,8 @@ class DashboardController extends Controller
 
     public function enrolledCourses()
     {
-        $modules = Module::query()
-            ->where('is_active', true)
+        // Get all active modules
+        $modules = Module::where('is_active', true)
             ->orderBy('order')
             ->get();
 

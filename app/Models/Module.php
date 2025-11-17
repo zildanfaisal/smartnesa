@@ -17,4 +17,14 @@ class Module extends Model
         'order',
         'is_active',
     ];
+     protected $casts = [
+        'is_active' => 'boolean',
+        'order' => 'integer',
+    ];
+
+    // Relasi ke modules_score
+    public function scores()
+    {
+        return $this->hasMany(ModulScore::class, 'module_id');
+    }
 }

@@ -56,7 +56,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/project/{id}', [MentorController::class, 'projectShow'])->name('project.show');
         Route::post('/project/{id}/comment', [MentorController::class, 'updateComment'])->name('project.comment');
         Route::delete('/project/{id}/comment', [MentorController::class, 'deleteComment'])->name('project.comment.delete');
-    });
+
+        // Courses (Modules) Management
+        
+        });
 
     // User Dashboard
     Route::middleware(['role:user'])->prefix('dashboard')->name('user.')->group(function () {

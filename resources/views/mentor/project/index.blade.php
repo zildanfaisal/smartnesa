@@ -92,6 +92,7 @@
 
     .student-details small {
         color: #718096;
+        display: block;
     }
 
     .badge-comment {
@@ -172,7 +173,6 @@
     @endif
 
     <!-- Filter Section -->
-  <!-- Filter Section -->
     <div class="filter-card">
         <div class="filter-title">
             <i class="ti-filter"></i> Filter & Pencarian
@@ -191,19 +191,17 @@
 
                 <div class="col-md-3">
                     <label class="form-label"><strong>Bab</strong></label>
-                     <select
-            class="w-40 border border-gray-300 rounded-lg px-3 py-2 bg-white focus:ring-2 focus:ring-blue-500">
+                    <select name="bab" class="form-select">
                         <option value="">Semua Bab</option>
-                        <option value="1" {{ request('bab') == '1' ? 'selected' : '' }}>Bab 1</option>
-                        <option value="2" {{ request('bab') == '2' ? 'selected' : '' }}>Bab 2</option>
-                        <option value="3" {{ request('bab') == '3' ? 'selected' : '' }}>Bab 3</option>
+                        <option value="Bab 1" {{ request('bab') == 'Bab 1' ? 'selected' : '' }}>Bab 1</option>
+                        <option value="Bab 2" {{ request('bab') == 'Bab 2' ? 'selected' : '' }}>Bab 2</option>
+                        <option value="Bab 3" {{ request('bab') == 'Bab 3' ? 'selected' : '' }}>Bab 3</option>
                     </select>
                 </div>
 
                 <div class="col-md-3">
                     <label class="form-label"><strong>Universitas</strong></label>
-                     <select
-            class="w-48 border border-gray-300 rounded-lg px-3 py-2 bg-white focus:ring-2 focus:ring-blue-500">
+                    <select name="university" class="form-select">
                         <option value="">Semua Universitas</option>
                         @foreach($universities as $univ)
                             <option value="{{ $univ }}" {{ request('university') == $univ ? 'selected' : '' }}>
@@ -215,8 +213,7 @@
 
                 <div class="col-md-3">
                     <label class="form-label"><strong>Angkatan</strong></label>
-                    <select
-            class="w-44 border border-gray-300 rounded-lg px-3 py-2 bg-white focus:ring-2 focus:ring-blue-500">
+                    <select name="angkatan" class="form-select">
                         <option value="">Semua Angkatan</option>
                         @foreach($angkatans as $ank)
                             <option value="{{ $ank }}" {{ request('angkatan') == $ank ? 'selected' : '' }}>
@@ -264,12 +261,12 @@
                             <td class="text-center">{{ $essays->firstItem() + $index }}</td>
                             <td>
                                 <div class="student-info">
-                                    <img src="{{ $essay->user->avatar ?? 'https://ui-avatars.com/api/?name=' . urlencode($essay->user->name) }}"
+                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($essay->user->nama ?? 'User') }}&background=667eea&color=fff"
                                          alt="avatar"
                                          class="student-avatar">
                                     <div class="student-details">
-                                        <strong>{{ $essay->user->name }}</strong>
-                                        <small>{{ $essay->user->university ?? '-' }}</small>
+                                        <strong>{{ $essay->user->nama ?? 'Unknown' }}</strong>
+                                        <small>{{ $essay->user->univ ?? '-' }}</small>
                                         <small>Angkatan {{ $essay->user->angkatan ?? '-' }}</small>
                                     </div>
                                 </div>

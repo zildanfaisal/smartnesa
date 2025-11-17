@@ -23,10 +23,10 @@ class EssayFile extends Model
         'comment'
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 
     // Scope untuk search
     public function scopeSearch($query, $search)
@@ -63,4 +63,8 @@ class EssayFile extends Model
         });
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

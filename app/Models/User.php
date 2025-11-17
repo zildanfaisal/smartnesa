@@ -129,4 +129,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(EssayFile::class);
     }
+
+    public function essayFiles()
+    {
+        return $this->hasMany(EssayFile::class, 'user_id');
+    }
+
+    // Relasi ke modules_score
+    public function modulesScores()
+    {
+        return $this->hasMany(ModulScore::class, 'user_id');
+    }
 }

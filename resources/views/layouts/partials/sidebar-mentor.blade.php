@@ -2,7 +2,7 @@
     <!-- User Info -->
     <div class="sidebar-header">
         <small>Welcome,</small>
-        <div class="user-name">{{ Auth::user()->name ?? 'Zidan' }}</div>
+        <div class="user-name">{{ Auth::user()->nama ?? Auth::user()->name ?? 'Mentor' }}</div>
     </div>
 
     <!-- Navigation Menu -->
@@ -15,10 +15,6 @@
             <i class="ti-user"></i> My Profile
         </a>
 
-        <!-- <a href="" class="{{ request()->routeIs('courses/enrolled*') ? 'active' : '' }}">
-            <i class="ti-book"></i> Enrolled Courses
-        </a> -->
-
         <a href="{{ route('mentor.quiz.attempt.index') }}" class="{{ request()->routeIs('mentor.quiz.*') ? 'active' : '' }}">
             <i class="ti-write"></i> Student Quiz Attempts
         </a>
@@ -27,13 +23,8 @@
             <i class="ti-briefcase"></i> Student Project
         </a>
 
-        <!-- <a href="" class="{{ Request::is('certificates*') ? 'active' : '' }}">
-            <i class="ti-medall"></i> Certificate
-        </a> -->
-
-      {{-- Logout --}}
-        <a href="{{ route('logout') }}"  onclick="confirmLogout(); return false;"
-           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        {{-- Logout --}}
+        <a href="#" onclick="confirmLogout(); return false;">
             <i class="ti-shift-right"></i> Logout
         </a>
 
@@ -42,19 +33,31 @@
         </form>
     </div>
 </aside>
+
 <script>
 function confirmLogout() {
     Swal.fire({
-        title: 'Logout?',
-        text: "Apakah Anda yakin ingin keluar?",
-        icon: 'warning',
+        title: 'Keluar dari Smartnesa?',
+        text: "Anda akan keluar dari sesi saat ini",
+        icon: 'question',
         showCancelButton: true,
-        confirmButtonColor: '#dc3545',
+        confirmButtonColor: '#d33',
         cancelButtonColor: '#6c757d',
         confirmButtonText: 'Ya, Logout',
-        cancelButtonText: 'Batal'
+        cancelButtonText: 'Batal',
+        reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Logging out...',
+                text: 'Mohon tunggu sebentar',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showConfirmButton: false,
+                willOpen: () => {
+                    Swal.showLoading();
+                }
+            });
             document.getElementById('logout-form').submit();
         }
     });

@@ -7,25 +7,69 @@ use App\Http\Requests\Admin\StoreUserRequest;
 use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Models\EssayFile;
 use App\Models\User;
+use App\Models\Module;
+use App\Models\ModulScore;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public function index()
+     public function index()
     {
-        // Fetch users for table (paginate)
-        $users = User::orderByDesc('created_at')->paginate(10);
+        // Total Users
+        $totalUsers = User::count();
 
-        // Keep existing stats (placeholder) or compute as needed
-        return view('admin.index', [
-            'totalUsers' => $users->total(),
-            'totalCourses' => 30,
-            'completedCourses' => 245,
-            'certificates' => 89,
-            'users' => $users,
-        ]);
+        // Total Essays
+        $totalEssays = EssayFile::count();
+
+        // Total Modules
+        $totalModules = Module::count();
+
+        // Average Score dari modules_score
+        $avgScore = ModulScore::avg('score');
+        $avgScore = $avgScore ? number_format($avgScore, 1) : 0;
+
+        // Users by Role
+        $usersByRole = User::select('role', DB::raw('COUNT(*) as count'))
+            ->groupBy('role')
+            ->pluck('count', 'role')
+            ->toArray();
+
+        // Essays by Bab
+        $essaysByBab = EssayFile::select('essay_bab', DB::raw('COUNT(*) as count'))
+            ->groupBy('essay_bab')
+            ->orderBy('essay_bab')
+            ->pluck('count', 'essay_bab')
+            ->toArray();
+
+        // Reviewed vs Pending Essays
+        $reviewedEssays = EssayFile::whereNotNull('comment')
+            ->where('comment', '!=', '')
+            ->count();
+
+        $pendingEssays = EssayFile::where(function($query) {
+            $query->whereNull('comment')
+                  ->orWhere('comment', '');
+        })->count();
+
+        // Recent Users (10 terbaru)
+        $recentUsers = User::latest()
+            ->take(10)
+            ->get();
+
+        return view('admin.index', compact(
+            'totalUsers',
+            'totalEssays',
+            'totalModules',
+            'avgScore',
+            'usersByRole',
+            'essaysByBab',
+            'reviewedEssays',
+            'pendingEssays',
+            'recentUsers'
+        ));
     }
 
     public function createIndex()
