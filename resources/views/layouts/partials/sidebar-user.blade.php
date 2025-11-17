@@ -44,8 +44,14 @@
             <i class="ti-medall"></i> Certificate
         </a> -->
 
+        {{-- My Project --}}
+        <a href="{{ route('user.portfolio.show', ['id' => Auth::id()]) }}" target="_blank" rel="noopener"
+           class="{{ request()->routeIs('user.portfolio.*') ? 'active' : '' }}">
+            <i class="ti-briefcase"></i> Portfolio
+        </a>
+
         {{-- Logout --}}
-       <a href="{{ route('logout') }}"  onclick="confirmLogout(); return false;"
+        <a href="{{ route('logout') }}"  onclick="confirmLogout(); return false;"
            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="ti-shift-right"></i> Logout
         </a>

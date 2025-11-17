@@ -6,6 +6,7 @@ use App\Http\Controllers\MentorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\PortfolioController;
 use Illuminate\Support\Facades\Route;
 
 // Frontend Routes
@@ -19,6 +20,9 @@ Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
 Route::get('/simpelmawa', [FrontendController::class, 'simpelmawa'])->name('simpelmawa');
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+
+// Public portfolio by username (no auth)
+Route::get('/portfolio/{user:username}', [PortfolioController::class, 'show'])->name('user.portfolio.show');
 
 // Authenticated Routes
 Route::middleware(['auth', 'verified'])->group(function () {
