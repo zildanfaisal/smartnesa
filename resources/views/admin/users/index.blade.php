@@ -76,6 +76,9 @@
     <div class="page-header">
         <h3 class="text-white"><i class="ti-files"></i> Daftar Akun</h3>
     </div>
+    <div class="mb-4">
+        <a href="{{ route('admin.users.create') }}" class="btn btn-primary w-auto">+ Tambah Pengguna</a>
+    </div>
     <div class="data-card">
         <div class="table-responsive">
             <table class="table table-hover align-middle">
