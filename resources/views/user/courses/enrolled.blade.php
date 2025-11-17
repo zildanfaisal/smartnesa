@@ -21,7 +21,7 @@
     }
 </style>
 
-<section class="section page-title" data-aos="fade-up">
+<section class="section page-title">
     <div class="container">
         <div class="page-header">
             <h3 class="text-white"><i class="ti-files"></i>Enrolled Courses</h3>
@@ -29,7 +29,7 @@
     </div>
 </section>
 
-<section class="section pt-0" data-aos="fade-up">
+<section class="section pt-0">
     <div class="container">
         <div class="row">
             <div class="col-12">
