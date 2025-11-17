@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreUserRequest;
 use App\Http\Requests\Admin\UpdateUserRequest;
+use App\Models\EssayFile;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -90,5 +92,55 @@ class AdminController extends Controller
     {
         $user->delete();
         return redirect()->route('admin.users.index')->with('status', 'user-deleted');
+    }
+
+    public function projectIndex(Request $request)
+    {
+        $search = $request->input('search');
+        $bab = $request->input('bab');
+        $university = $request->input('university'); // dari form
+        $angkatan = $request->input('angkatan');
+
+        $essays = EssayFile::with('user')
+            ->when($search, function ($query) use ($search) {
+                $query->whereHas('user', function ($q) use ($search) {
+                    $q->where('nama', 'like', '%' . $search . '%'); // PERBAIKAN: nama -> nama
+                });
+            })
+            ->when($bab, function ($query) use ($bab) {
+                $query->where('essay_bab', $bab);
+            })
+            ->when($university, function ($query) use ($university) {
+                $query->whereHas('user', function ($q) use ($university) {
+                    $q->where('univ', $university); // PERBAIKAN: university -> univ
+                });
+            })
+            ->when($angkatan, function ($query) use ($angkatan) {
+                $query->whereHas('user', function ($q) use ($angkatan) {
+                    $q->where('angkatan', $angkatan);
+                });
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString(); // Agar query string tetap ada saat pagination
+
+        // Data untuk filter dropdown - PERBAIKAN: univ bukan university
+        $universities = User::whereNotNull('univ')
+            ->distinct()
+            ->pluck('univ');
+
+        $angkatans = User::whereNotNull('angkatan')
+            ->distinct()
+            ->orderBy('angkatan', 'desc')
+            ->pluck('angkatan');
+
+        return view('admin.project.index', compact('essays', 'universities', 'angkatans'));
+    }
+
+    // SHOW - Lihat detail essay
+    public function projectShow($id)
+    {
+        $essay = EssayFile::with('user')->findOrFail($id);
+        return view('admin.project.show', compact('essay'));
     }
 }

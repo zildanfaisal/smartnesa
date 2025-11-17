@@ -4,7 +4,7 @@
 
 @section('content')
 <style>
-    .admin-container {
+    .mentor-container {
         padding: 30px;
     }
 
@@ -168,7 +168,7 @@
 	}
 </style>
 <!-- Student Quiz Attempts Table -->
-<div class="admin-container" data-aos="fade-up">
+<div class="mentor-container" data-aos="fade-up">
 	<div class="page-header">
         <h3 class="text-white"><i class="ti-files"></i> Daftar Quiz Mahasiswa</h3>
     </div>
@@ -184,7 +184,7 @@
 		<div class="filter-title">
             <i class="ti-filter"></i> Filter & Pencarian
         </div>
-		<form method="GET" action="{{ route('admin.quiz.attempt.index') }}" id="attempt-filter-form">
+		<form method="GET" action="{{ route('mentor.quiz.attempt.index') }}" id="attempt-filter-form">
 			<div class="row g-3">
 				<div class="col-md-3">
 					<label class="form-label"><strong>Cari Nama Mahasiswa</strong></label>
@@ -218,7 +218,7 @@
 					</select>
 				</div>
 				<div class="mt-3 ml-1">
-					<a class="btn btn-reset" href="{{ route('admin.quiz.attempt.index') }}">
+					<a class="btn btn-reset" href="{{ route('mentor.quiz.attempt.index') }}">
 						<i class="ti-reload"></i> Reset Filter
 					</a>
 				</div>

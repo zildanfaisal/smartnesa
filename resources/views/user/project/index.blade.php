@@ -2,7 +2,7 @@
 @section('title', 'Karya Esai - Smartnesa')
 
 @section('content')
-<div class="hero-section" data-aos="fade-down">
+<div class="hero-section" data-aos="fade-up">
     <div class="hero-content">
         <div class="hero-left">
             <img class="hero-avatar" src="{{ Auth::user()->avatar ?? asset('images/avatar-default.jpg') }}"
@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<div class="container-fluid mt-4 px-4">
+<div class="container-fluid mt-4 px-4" data-aos="fade-up">
     <div class="row">
         <div class="col-lg-12">
             <div class="card shadow-sm">

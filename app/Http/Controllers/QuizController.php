@@ -71,6 +71,51 @@ class QuizController extends Controller
         ));
     }
 
+    public function mentorIndex(Request $request)
+    {
+        $search   = trim((string) $request->input('q', ''));
+        $univ     = $request->input('univ');
+        $jurusan  = $request->input('jurusan');
+        $angkatan = $request->input('angkatan');
+
+        $query = ModulScore::with(['user', 'module'])
+            ->when($search !== '', function ($q) use ($search) {
+                $q->whereHas('user', function ($uq) use ($search) {
+                    $uq->where('nama', 'like', "%{$search}%")
+                       ->orWhere('username', 'like', "%{$search}%");
+                });
+            })
+            ->when($univ, function ($q) use ($univ) {
+                $q->whereHas('user', fn ($uq) => $uq->where('univ', $univ));
+            })
+            ->when($jurusan, function ($q) use ($jurusan) {
+                $q->whereHas('user', fn ($uq) => $uq->where('jurusan', $jurusan));
+            })
+            ->when($angkatan, function ($q) use ($angkatan) {
+                $q->whereHas('user', fn ($uq) => $uq->where('angkatan', $angkatan));
+            })
+            ->orderByDesc('updated_at');
+
+        $scores = $query->paginate(15)->withQueryString();
+
+        // Options for filters (distinct values from users)
+        $univOptions = User::query()
+            ->whereNotNull('univ')->where('univ', '!=', '')
+            ->distinct()->orderBy('univ')->pluck('univ');
+        $jurusanOptions = User::query()
+            ->whereNotNull('jurusan')->where('jurusan', '!=', '')
+            ->distinct()->orderBy('jurusan')->pluck('jurusan');
+        $angkatanOptions = User::query()
+            ->whereNotNull('angkatan')->where('angkatan', '!=', '')
+            ->distinct()->orderBy('angkatan')->pluck('angkatan');
+
+        return view('mentor.quizattempt.index', compact(
+            'scores',
+            'search', 'univ', 'jurusan', 'angkatan',
+            'univOptions', 'jurusanOptions', 'angkatanOptions'
+        ));
+    }
+
     public function submit(Request $request)
     {
         $validated = $request->validate([

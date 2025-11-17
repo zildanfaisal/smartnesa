@@ -11,29 +11,29 @@
             <i class="ti-layout-grid2"></i> Dashboard
         </a>
 
-        <a href="{{ route('profile.edit') }}" class="{{ request()->routeIs('profile.*') ? 'active' : '' }}">
-            <i class="ti-user"></i> My Profile
-        </a>
-
         <a href="{{ route('admin.users.index') }}" class="{{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
             <i class="ti-user"></i> Account
         </a>
 
-        <a href="" class="{{ Request::is('courses/enrolled*') ? 'active' : '' }}">
-            <i class="ti-book"></i> Enrolled Courses
+        <a href="{{ route('profile.edit') }}" class="{{ request()->routeIs('profile.*') ? 'active' : '' }}">
+            <i class="ti-user"></i> My Profile
         </a>
+
+        <!-- <a href="" class="{{ Request::is('courses/enrolled*') ? 'active' : '' }}">
+            <i class="ti-book"></i> Enrolled Courses
+        </a> -->
 
         <a href="{{ route('admin.quiz.attempt.index') }}" class="{{ request()->routeIs('admin.quiz.*') ? 'active' : '' }}">
             <i class="ti-write"></i> Student Quiz Attempts
         </a>
 
-        <a href="" class="{{ Request::is('projects*') ? 'active' : '' }}">
-            <i class="ti-briefcase"></i> My Project
+        <a href="{{ route('admin.project.index') }}" class="{{ request()->routeIs('admin.project.*') ? 'active' : '' }}">
+            <i class="ti-briefcase"></i> Student Project
         </a>
 
-        <a href="" class="{{ Request::is('certificates*') ? 'active' : '' }}">
+        <!-- <a href="" class="{{ request()->is('certificates*') ? 'active' : '' }}">
             <i class="ti-medall"></i> Certificate
-        </a>
+        </a> -->
 
         <!-- Link Logout -->
          <a href="{{ route('logout') }}"  onclick="confirmLogout(); return false;"

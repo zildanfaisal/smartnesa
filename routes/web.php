@@ -40,10 +40,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::prefix('quiz')->name('quiz.')->group(function () {
             Route::get('/attempts', [QuizController::class, 'adminIndex'])->name('attempt.index');
         });
+
+        Route::get('/project', [AdminController::class, 'projectIndex'])->name('project.index');
+        Route::get('/project/{id}', [AdminController::class, 'projectShow'])->name('project.show');
     });
 
     // Mentor Dashboard
     Route::middleware(['role:mentor'])->prefix('mentor')->name('mentor.')->group(function () {
+        Route::prefix('quiz')->name('quiz.')->group(function () {
+            Route::get('/attempts', [QuizController::class, 'mentorIndex'])->name('attempt.index');
+        });
+
         Route::get('/', [MentorController::class, 'index'])->name('index');
         Route::get('/project', [MentorController::class, 'projectIndex'])->name('project.index');
         Route::get('/project/{id}', [MentorController::class, 'projectShow'])->name('project.show');

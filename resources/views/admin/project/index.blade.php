@@ -178,7 +178,7 @@
             <i class="ti-filter"></i> Filter & Pencarian
         </div>
 
-        <form action="{{ route('mentor.project.index') }}" method="GET">
+        <form action="{{ route('admin.project.index') }}" method="GET">
             <div class="row g-3">
                 <div class="col-md-3">
                     <label class="form-label"><strong>Cari Nama Mahasiswa</strong></label>
@@ -232,7 +232,7 @@
                             <i class="ti-search"></i> Filter
                         </button>
                         @if(request()->hasAny(['search', 'bab', 'university', 'angkatan']))
-                            <a href="{{ route('mentor.project.index') }}" class="btn btn-reset">
+                            <a href="{{ route('admin.project.index') }}" class="btn btn-reset">
                                 <i class="ti-reload"></i> Reset Filter
                             </a>
                         @endif
@@ -298,7 +298,7 @@
                                 </a>
                             </td>
                             <td class="text-center">
-                                <a href="{{ route('mentor.project.show', $essay->id) }}"
+                                <a href="{{ route('admin.project.show', $essay->id) }}"
                                    class="btn btn-sm btn-success"
                                    title="Detail & Komentar">
                                     <i class="ti-comment-alt"></i>

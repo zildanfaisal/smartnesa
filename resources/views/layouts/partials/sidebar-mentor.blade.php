@@ -7,30 +7,29 @@
 
     <!-- Navigation Menu -->
     <div class="sidebar-menu">
-        <a href="{{ route('mentor.index') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">
+        <a href="{{ route('mentor.index') }}" class="{{ request()->routeIs('mentor.index') ? 'active' : '' }}">
             <i class="ti-layout-grid2"></i> Dashboard
         </a>
 
-        <a href="" class="{{ Request::is('profile*') ? 'active' : '' }}">
+        <a href="{{ route('profile.edit') }}" class="{{ request()->routeIs('profile.*') ? 'active' : '' }}">
             <i class="ti-user"></i> My Profile
         </a>
 
-        <a href="" class="{{ Request::is('courses/enrolled*') ? 'active' : '' }}">
+        <!-- <a href="" class="{{ request()->routeIs('courses/enrolled*') ? 'active' : '' }}">
             <i class="ti-book"></i> Enrolled Courses
+        </a> -->
+
+        <a href="{{ route('mentor.quiz.attempt.index') }}" class="{{ request()->routeIs('mentor.quiz.*') ? 'active' : '' }}">
+            <i class="ti-write"></i> Student Quiz Attempts
         </a>
 
-        <a href="" class="{{ Request::is('quiz/attempts*') ? 'active' : '' }}">
-            <i class="ti-write"></i> My Quiz Attempts
-        </a>
-
-         <a href="{{ route('mentor.project.index') }}"
-        class="{{ Request::routeIs('mentor.project.*') ? 'active' : '' }}">
+        <a href="{{ route('mentor.project.index') }}" class="{{ Request::routeIs('mentor.project.*') ? 'active' : '' }}">
             <i class="ti-briefcase"></i> Student Project
         </a>
 
-        <a href="" class="{{ Request::is('certificates*') ? 'active' : '' }}">
+        <!-- <a href="" class="{{ Request::is('certificates*') ? 'active' : '' }}">
             <i class="ti-medall"></i> Certificate
-        </a>
+        </a> -->
 
       {{-- Logout --}}
         <a href="{{ route('logout') }}"  onclick="confirmLogout(); return false;"

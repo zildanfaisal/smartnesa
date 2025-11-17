@@ -39,10 +39,10 @@
         </a>
 
         {{-- Certificate --}}
-        <a href="#"
+        <!-- <a href="#"
            class="{{ request()->is('certificates*') ? 'active' : '' }}">
             <i class="ti-medall"></i> Certificate
-        </a>
+        </a> -->
 
         {{-- Logout --}}
        <a href="{{ route('logout') }}"  onclick="confirmLogout(); return false;"
