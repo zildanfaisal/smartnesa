@@ -81,7 +81,6 @@
         </div>
     </div>
 </div>
-@endsection
 
 @push('styles')
 <style>
@@ -370,3 +369,4 @@
     }
 </style>
 @endpush
+@endsection

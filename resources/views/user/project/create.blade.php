@@ -191,6 +191,12 @@
                             <option value="Bab 1" {{ old('essay_bab') == 'Bab 1' ? 'selected' : '' }}>Bab 1</option>
                             <option value="Bab 2" {{ old('essay_bab') == 'Bab 2' ? 'selected' : '' }}>Bab 2</option>
                             <option value="Bab 3" {{ old('essay_bab') == 'Bab 3' ? 'selected' : '' }}>Bab 3</option>
+                            <option value="Bab 4" {{ old('essay_bab') == 'Bab 4' ? 'selected' : '' }}>Bab 4</option>
+                            <option value="Bab 5" {{ old('essay_bab') == 'Bab 5' ? 'selected' : '' }}>Bab 5</option>
+                            <option value="Bab 6" {{ old('essay_bab') == 'Bab 6' ? 'selected' : '' }}>Bab 6</option>
+                            <option value="Bab 7" {{ old('essay_bab') == 'Bab 7' ? 'selected' : '' }}>Bab 7</option>
+                            <option value="Bab 8" {{ old('essay_bab') == 'Bab 8' ? 'selected' : '' }}>Bab 8</option>
+                            <option value="Bab 9" {{ old('essay_bab') == 'Bab 9' ? 'selected' : '' }}>Bab 9</option>
                         </select>
                         @error('essay_bab')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -277,5 +283,18 @@ function formatBytes(bytes) {
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
 }
+
+document.querySelector('form').addEventListener('submit', function(e) {
+    Swal.fire({
+        title: 'Menyimpan...',
+        text: 'Mohon tunggu sebentar',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showConfirmButton: false,
+        willOpen: () => {
+            Swal.showLoading();
+        }
+    });
+});
 </script>
 @endsection

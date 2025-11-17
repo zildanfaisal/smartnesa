@@ -19,12 +19,12 @@
     </div>
 </div>
 
-<div class="container-fluid mt-4">
+<div class="container-fluid mt-4 px-4">
     <div class="row">
         <div class="col-lg-12">
             <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
                         <h4 class="mb-0">Tabel Karya Esai</h4>
                         <a href="{{ route('user.project.create') }}" class="btn btn-primary">
                             <i class="ti-plus"></i> Tambah Essay
@@ -39,32 +39,32 @@
                     @endif
 
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover align-middle text-center">
+                        <table class="table table-bordered table-hover align-middle">
                             <thead class="table-light">
                                 <tr>
-                                    <th width="5%">No</th>
-                                    <th width="15%">Bab</th>
-                                    <th width="30%">Judul Esai</th>
-                                    <th width="20%">File PDF</th>
-                                    <th width="15%">Tanggal Upload</th>
-                                    <th width="15%">Aksi</th>
+                                    <th class="text-center" width="5%">No</th>
+                                    <th class="text-center" width="12%">Bab</th>
+                                    <th width="28%">Judul Esai</th>
+                                    <th class="text-center" width="15%">File PDF</th>
+                                    <th class="text-center" width="18%">Tanggal Upload</th>
+                                    <th class="text-center" width="22%">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse($essays as $index => $essay)
                                     <tr>
-                                        <td>{{ $index + 1 }}</td>
-                                        <td>{{ $essay->essay_bab }}</td>
-                                        <td class="text-start">{{ $essay->essay_name }}</td>
-                                        <td>
+                                        <td class="text-center">{{ $index + 1 }}</td>
+                                        <td class="text-center">{{ $essay->essay_bab }}</td>
+                                        <td class="ps-3">{{ $essay->essay_name }}</td>
+                                        <td class="text-center">
                                             <a href="{{ asset('storage/' . $essay->essay_file) }}"
                                                target="_blank"
                                                class="btn btn-sm btn-info">
                                                 <i class="ti-file"></i> Lihat PDF
                                             </a>
                                         </td>
-                                        <td>{{ $essay->created_at->format('d M Y') }}</td>
-                                        <td>
+                                        <td class="text-center">{{ $essay->created_at->format('d M Y') }}</td>
+                                        <td class="text-center">
                                             <div class="btn-group" role="group">
                                                 <a href="{{ route('user.project.show', $essay->id) }}"
                                                    class="btn btn-sm btn-success"
@@ -76,15 +76,16 @@
                                                    title="Edit">
                                                     <i class="ti-pencil"></i>
                                                 </a>
-                                                <form action="{{ route('user.project.destroy', $essay->id) }}"
-                                                      method="POST"
-                                                      onsubmit="return confirm('Yakin ingin menghapus essay ini?')"
-                                                      style="display: inline;">
+                                               <form action="{{ route('user.project.destroy', $essay->id) }}"
+                                                    method="POST"
+                                                    id="delete-form-{{ $essay->id }}"
+                                                    style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit"
+                                                    <button type="button"
                                                             class="btn btn-sm btn-danger"
-                                                            title="Hapus">
+                                                            title="Hapus"
+                                                            onclick="confirmDelete({{ $essay->id }})">
                                                         <i class="ti-trash"></i>
                                                     </button>
                                                 </form>
@@ -93,10 +94,10 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center py-4">
+                                        <td colspan="6" class="text-center py-5">
                                             <div class="text-muted">
-                                                <i class="ti-info-alt" style="font-size: 2rem;"></i>
-                                                <p class="mt-2">Belum ada data essay. Silakan tambah essay baru.</p>
+                                                <i class="ti-info-alt" style="font-size: 2.5rem;"></i>
+                                                <p class="mt-3 mb-0">Belum ada data essay. Silakan tambah essay baru.</p>
                                             </div>
                                         </td>
                                     </tr>
@@ -109,8 +110,26 @@
         </div>
     </div>
 </div>
-@endsection
 
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+            text: "Essay yang dihapus tidak dapat dikembalikan!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Ya, Hapus!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('delete-form-' + id).submit();
+        }
+    });
+}
+</script>
+@endsection
 @push('styles')
 <style>
     /* Hero Section */
@@ -407,10 +426,24 @@
         padding: 16px 20px !important;  /* Perbesar padding */
         vertical-align: middle;
     }
+     .card {
+        border-radius: 10px;
+    }
+     .btn-group .btn {
+        margin: 0 2px;
+    }
 
     .card-body {
         padding: 30px;  /* Buat isi kartu lebih luas */
     }
 
+     .table > :not(caption) > * > * {
+        padding: 1rem 0.75rem;
+    }
+
+      .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 </style>
 @endpush

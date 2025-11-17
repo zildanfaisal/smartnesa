@@ -32,13 +32,32 @@
             <i class="ti-medall"></i> Certificate
         </a>
 
-        <a href=""
+      {{-- Logout --}}
+        <a href="{{ route('logout') }}"  onclick="confirmLogout(); return false;"
            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="ti-shift-right"></i> Logout
         </a>
 
-        <form id="logout-form" action="" method="POST" class="d-none">
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf
         </form>
     </div>
 </aside>
+<script>
+function confirmLogout() {
+    Swal.fire({
+        title: 'Logout?',
+        text: "Apakah Anda yakin ingin keluar?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Ya, Logout',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('logout-form').submit();
+        }
+    });
+}
+</script>

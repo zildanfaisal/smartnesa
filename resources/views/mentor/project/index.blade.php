@@ -160,8 +160,8 @@
 
 <div class="mentor-container">
     <div class="page-header">
-        <h3><i class="ti-files"></i> Daftar Essay Mahasiswa</h3>
-        <p class="mb-0 mt-2">Kelola dan berikan komentar pada essay mahasiswa</p>
+        <h3 class="text-white"><i class="ti-files"></i> Daftar Essay Mahasiswa</h3>
+        <p class="mb-0 mt-2 text-white">Kelola dan berikan komentar pada essay mahasiswa</p>
     </div>
 
     @if(session('success'))

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/themify-icons/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/aos/aos.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
     <!-- CUSTOM CSS -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -133,5 +134,37 @@
     </script>
 
     @stack('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Script untuk menampilkan SweetAlert -->
+<script>
+    @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '{{ session('success') }}',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true
+        });
+    @endif
+
+    @if(session('error'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '{{ session('error') }}',
+            confirmButtonColor: '#d33'
+        });
+    @endif
+
+    @if(session('warning'))
+        Swal.fire({
+            icon: 'warning',
+            title: 'Perhatian!',
+            text: '{{ session('warning') }}',
+            confirmButtonColor: '#f39c12'
+        });
+    @endif
+</script>
 </body>
 </html>
