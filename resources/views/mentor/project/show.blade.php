@@ -1,9 +1,10 @@
 @extends('layouts.dashboard')
-@section('title', 'Detail Essay - Mentor')
+
+@section('title', 'Review Essay - Mentor')
 
 @section('content')
 <style>
-    .detail-container {
+    .review-container {
         padding: 30px;
     }
 
@@ -15,227 +16,113 @@
         color: white;
     }
 
-    .page-header h3 {
-        margin: 0;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .info-card {
+    .essay-card {
         background: white;
         border-radius: 12px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        padding: 25px;
+        padding: 30px;
         margin-bottom: 25px;
     }
 
-    .section-title {
-        font-weight: 600;
-        color: #2d3748;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 16px;
-        padding-bottom: 15px;
-        border-bottom: 2px solid #e2e8f0;
-    }
-
-    .section-title i {
-        color: #667eea;
-        font-size: 20px;
-    }
-
-    .info-row {
-        display: flex;
-        padding: 12px 0;
-        border-bottom: 1px solid #f7fafc;
-    }
-
-    .info-row:last-child {
-        border-bottom: none;
-    }
-
-    .info-label {
-        width: 180px;
-        font-weight: 600;
-        color: #4a5568;
-        font-size: 14px;
-    }
-
-    .info-value {
-        flex: 1;
-        color: #2d3748;
-    }
-
-    .student-profile {
+    .student-info {
         display: flex;
         align-items: center;
         gap: 15px;
-        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
         padding: 20px;
-        border-radius: 12px;
-        margin-bottom: 20px;
+        background: #f8fafc;
+        border-radius: 10px;
+        margin-bottom: 25px;
     }
 
-    .student-avatar-large {
-        width: 70px;
-        height: 70px;
+    .student-avatar {
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
         object-fit: cover;
-        border: 3px solid white;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    .student-profile-info h4 {
-        margin: 0 0 8px;
-        color: #1e40af;
-        font-weight: 700;
-    }
-
-    .student-profile-info p {
-        margin: 0;
-        color: #475569;
-        font-size: 14px;
     }
 
     .comment-section {
         background: white;
         border-radius: 12px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        padding: 25px;
+        padding: 30px;
+        margin-bottom: 25px;
     }
 
-    .comment-form textarea {
-        border: 2px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 15px;
-        font-size: 14px;
-        resize: vertical;
-        min-height: 150px;
-    }
-
-    .comment-form textarea:focus {
-        border-color: #667eea;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        outline: none;
-    }
-
-    .existing-comment {
-        background: #fffbeb;
-        border-left: 4px solid #f59e0b;
+    .comment-item {
+        background: #f8fafc;
+        border-left: 4px solid #667eea;
         padding: 20px;
         border-radius: 8px;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
     }
 
-    .existing-comment-header {
+    .comment-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .comment-header {
         display: flex;
         justify-content: between;
         align-items: center;
         margin-bottom: 12px;
     }
 
-    .existing-comment-header strong {
-        color: #92400e;
+    .mentor-info {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
     }
 
-    .existing-comment-text {
-        color: #78350f;
-        line-height: 1.6;
-        margin-bottom: 15px;
+    .mentor-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
     }
 
-    .btn-save {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 12px 30px;
-        border: none;
-        border-radius: 8px;
+    .mentor-name {
         font-weight: 600;
-        transition: all 0.3s;
-    }
-
-    .btn-save:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        color: white;
-    }
-
-    .btn-edit {
-        background: #fbbf24;
-        color: white;
-        padding: 8px 20px;
-        border: none;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 13px;
-    }
-
-    .btn-edit:hover {
-        background: #f59e0b;
-        color: white;
-    }
-
-    .btn-delete {
-        background: #ef4444;
-        color: white;
-        padding: 8px 20px;
-        border: none;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 13px;
-        margin-left: 8px;
-    }
-
-    .btn-delete:hover {
-        background: #dc2626;
-        color: white;
-    }
-
-    .btn-back {
-        background: #e2e8f0;
-        color: #4a5568;
-        padding: 12px 30px;
-        border: none;
-        border-radius: 8px;
-        font-weight: 600;
-    }
-
-    .btn-back:hover {
-        background: #cbd5e0;
         color: #2d3748;
     }
 
-    .pdf-viewer {
-        background: white;
+    .comment-date {
+        font-size: 12px;
+        color: #718096;
+    }
+
+    .comment-text {
+        color: #4a5568;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .my-comment-form {
+        background: #fffbeb;
+        border: 2px solid #fbbf24;
         border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        padding: 20px;
+        padding: 25px;
+        margin-bottom: 25px;
     }
 
-    .pdf-viewer iframe {
-        border: 2px solid #e2e8f0;
-        border-radius: 8px;
+    .btn-delete-comment {
+        background: #dc2626;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
     }
 
-    #commentForm {
-        display: none;
-    }
-
-    #commentForm.show {
-        display: block;
+    .btn-delete-comment:hover {
+        background: #b91c1c;
     }
 </style>
 
-<div class="detail-container">
+<div class="review-container" data-aos="fade-up">
     <div class="page-header">
-        <h3><i class="ti-eye"></i> Detail Essay & Penilaian</h3>
+        <h3 class="text-white"><i class="ti-clipboard"></i> Review Essay Mahasiswa</h3>
+        <p class="mb-0 mt-2 text-white">Berikan feedback dan komentar untuk mahasiswa</p>
     </div>
 
     @if(session('success'))
@@ -245,145 +132,146 @@
         </div>
     @endif
 
-    <div class="row">
-        <!-- Left Column: Info & Comment -->
-        <div class="col-lg-5">
-            <!-- Student Profile -->
-            <div class="info-card">
-                <div class="section-title">
-                    <i class="ti-user"></i> Informasi Mahasiswa
-                </div>
-                <div class="student-profile">
-                    <img src="{{ $essay->user->avatar ?? 'https://ui-avatars.com/api/?name=' . urlencode($essay->user->name) }}"
-                         alt="avatar"
-                         class="student-avatar-large">
-                    <div class="student-profile-info">
-                        <h4>{{ $essay->user->name }}</h4>
-                        <p><i class="ti-location-pin"></i> {{ $essay->user->university ?? 'Universitas tidak tersedia' }}</p>
-                        <p><i class="ti-calendar"></i> Angkatan {{ $essay->user->angkatan ?? '-' }}</p>
-                    </div>
-                </div>
+    @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show">
+            <i class="ti-alert"></i> {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
 
-                <div class="info-row">
-                    <div class="info-label">Bab Essay</div>
-                    <div class="info-value">
-                        <span class="badge bg-primary">{{ $essay->essay_bab }}</span>
-                    </div>
-                </div>
+    <!-- Essay Details -->
+    <div class="essay-card">
+        <h5 class="mb-4"><i class="ti-file"></i> Detail Essay</h5>
 
-                <div class="info-row">
-                    <div class="info-label">Judul Essay</div>
-                    <div class="info-value">{{ $essay->essay_name }}</div>
-                </div>
-
-                <div class="info-row">
-                    <div class="info-label">Tanggal Upload</div>
-                    <div class="info-value">{{ $essay->created_at->format('d F Y, H:i') }} WIB</div>
-                </div>
-
-                <div class="info-row">
-                    <div class="info-label">File PDF</div>
-                    <div class="info-value">
-                        <a href="{{ asset('storage/' . $essay->essay_file) }}"
-                           target="_blank"
-                           class="btn btn-sm btn-info">
-                            <i class="ti-download"></i> Download PDF
-                        </a>
-                    </div>
-                </div>
+        <div class="student-info">
+            <img src="https://ui-avatars.com/api/?name={{ urlencode($essay->user->nama) }}&background=667eea&color=fff"
+                 alt="{{ $essay->user->nama }}"
+                 class="student-avatar">
+            <div>
+                <h6 class="mb-1">{{ $essay->user->nama }}</h6>
+                <small class="text-muted">{{ $essay->user->univ }} - {{ $essay->user->jurusan }}</small><br>
+                <small class="text-muted">Angkatan {{ $essay->user->angkatan }}</small>
             </div>
+        </div>
 
-            <!-- Comment Section -->
-            <div class="comment-section">
-                <div class="section-title">
-                    <i class="ti-comment-alt"></i> Komentar & Penilaian
-                </div>
-
-                @if($essay->comment)
-                    <!-- Existing Comment -->
-                    <div class="existing-comment" id="existingComment">
-                        <div class="existing-comment-header">
-                            <strong><i class="ti-check-box"></i> Komentar Anda</strong>
-                        </div>
-                        <div class="existing-comment-text">
-                            {{ $essay->comment }}
-                        </div>
-                        <div class="d-flex gap-2">
-                            <button type="button" class="btn btn-edit" onclick="showEditForm()">
-                                <i class="ti-pencil"></i> Edit Komentar
-                            </button>
-                            <form action="{{ route('mentor.project.comment.delete', $essay->id) }}"
-                                  method="POST"
-                                  style="display: inline;"
-                                  onsubmit="return confirm('Yakin ingin menghapus komentar ini?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-delete">
-                                    <i class="ti-trash"></i> Hapus Komentar
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                @endif
-
-                <!-- Comment Form -->
-                <form action="{{ route('mentor.project.comment', $essay->id) }}"
-                      method="POST"
-                      class="comment-form"
-                      id="commentForm"
-                      style="{{ $essay->comment ? '' : 'display: block;' }}">
-                    @csrf
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">
-                            <i class="ti-write"></i> Tulis Komentar
-                        </label>
-                        <textarea name="comment"
-                                  class="form-control @error('comment') is-invalid @enderror"
-                                  placeholder="Berikan komentar, saran, atau penilaian untuk essay ini..."
-                                  required>{{ old('comment', $essay->comment) }}</textarea>
-                        @error('comment')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                        <small class="text-muted">Maksimal 1000 karakter</small>
-                    </div>
-
-                    <div class="d-flex justify-content-between">
-                        @if($essay->comment)
-                            <button type="button" class="btn btn-back" onclick="cancelEdit()">
-                                <i class="ti-close"></i> Batal
-                            </button>
-                        @else
-                            <div></div>
-                        @endif
-                        <button type="submit" class="btn btn-save">
-                            <i class="ti-check"></i> Simpan Komentar
-                        </button>
-                    </div>
-                </form>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Bab:</strong> <span class="badge bg-primary">{{ $essay->essay_bab }}</span>
             </div>
+            <div class="col-md-8">
+                <strong>Judul:</strong> {{ $essay->essay_name }}
+            </div>
+        </div>
 
-            <!-- Back Button -->
-            <div class="mt-3">
-                <a href="{{ route('mentor.project.index') }}" class="btn btn-back w-100">
-                    <i class="ti-arrow-left"></i> Kembali ke Daftar Essay
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Tanggal Upload:</strong> {{ $essay->created_at->format('d M Y, H:i') }}
+            </div>
+            <div class="col-md-8">
+                <strong>File PDF:</strong>
+                <a href="{{ asset('storage/' . $essay->essay_file) }}"
+                   target="_blank"
+                   class="btn btn-sm btn-info ms-2">
+                    <i class="ti-eye"></i> Lihat PDF
                 </a>
             </div>
         </div>
 
-        <!-- Right Column: PDF Preview -->
-        <div class="col-lg-7">
-            <div class="pdf-viewer">
-                <div class="section-title">
-                    <i class="ti-file"></i> Preview Essay (PDF)
-                </div>
-                <iframe src="{{ asset('storage/' . $essay->essay_file) }}"
-                        width="100%"
-                        height="800px">
-                </iframe>
+        <div class="row">
+            <div class="col-12">
+                <strong>Total Comments:</strong>
+                <span class="badge bg-success">{{ $essay->comments->count() }} Comment(s)</span>
             </div>
         </div>
     </div>
+
+    <!-- My Comment Form (untuk mentor yang sedang login) -->
+    <div class="my-comment-form">
+        <h5 class="mb-3">
+            <i class="ti-pencil"></i>
+            {{ $myComment ? 'Edit Your Comment' : 'Add Your Comment' }}
+        </h5>
+
+        <form action="{{ route('mentor.project.comment', $essay->id) }}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label class="form-label"><strong>Your Feedback</strong></label>
+                <textarea name="comment"
+                          class="form-control @error('comment') is-invalid @enderror"
+                          rows="5"
+                          placeholder="Tulis feedback Anda untuk mahasiswa..."
+                          required>{{ old('comment', $myComment->comment ?? '') }}</textarea>
+                @error('comment')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">
+                    <i class="ti-check"></i> {{ $myComment ? 'Update Comment' : 'Submit Comment' }}
+                </button>
+
+                @if($myComment)
+                    <form action="{{ route('mentor.project.comment.delete', $essay->id) }}"
+                          method="POST"
+                          onsubmit="return confirm('Yakin ingin menghapus comment Anda?')"
+                          style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn-delete-comment">
+                            <i class="ti-trash"></i> Delete My Comment
+                        </button>
+                    </form>
+                @endif
+
+                <a href="{{ route('mentor.project.index') }}" class="btn btn-secondary">
+                    <i class="ti-arrow-left"></i> Back to List
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <!-- All Comments Section -->
+    <div class="comment-section">
+        <h5 class="mb-4">
+            <i class="ti-comments"></i> All Mentor Comments
+            <span class="badge bg-primary">{{ $essay->comments->count() }}</span>
+        </h5>
+
+        @forelse($essay->comments as $comment)
+            <div class="comment-item">
+                <div class="comment-header">
+                    <div class="mentor-info">
+                        <img src="https://ui-avatars.com/api/?name={{ urlencode($comment->mentor->nama) }}&background=764ba2&color=fff"
+                             alt="{{ $comment->mentor->nama }}"
+                             class="mentor-avatar">
+                        <div>
+                            <div class="mentor-name">
+                                {{ $comment->mentor->nama }}
+                                @if($comment->mentor_id == Auth::id())
+                                    <span class="badge bg-warning text-dark">You</span>
+                                @endif
+                            </div>
+                            <div class="comment-date">
+                                <i class="ti-time"></i> {{ $comment->created_at->diffForHumans() }}
+                                @if($comment->created_at != $comment->updated_at)
+                                    <small>(edited)</small>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="comment-text">{{ $comment->comment }}</p>
+            </div>
+        @empty
+            <div class="text-center py-4">
+                <i class="ti-info-alt text-muted" style="font-size: 3rem;"></i>
+                <p class="text-muted mt-2">Belum ada comment dari mentor.</p>
+            </div>
+        @endforelse
+    </div>
 </div>
+
 
 <script>
 function showEditForm() {

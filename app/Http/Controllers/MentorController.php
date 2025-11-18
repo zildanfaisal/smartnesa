@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\EssayFile;
 use App\Models\User;
 use App\Models\ModulScore;
+use App\Models\EssayComment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -23,19 +24,14 @@ class MentorController extends Controller
         // Total Essays
         $totalEssays = EssayFile::count();
 
-        // Essays dengan comment (dianggap sudah direview)
-        $essaysWithComment = EssayFile::whereNotNull('comment')
-            ->where('comment', '!=', '')
-            ->count();
+        // UPDATE: Essays dengan comment (dari tabel essay_comments)
+        $essaysWithComment = EssayFile::whereHas('comments')->count();
 
-        // Pending Essays (belum ada comment)
-        $pendingEssays = EssayFile::where(function($query) {
-            $query->whereNull('comment')
-                  ->orWhere('comment', '');
-        })->count();
+        // UPDATE: Pending Essays (belum ada comment dari mentor manapun)
+        $pendingEssays = EssayFile::whereDoesntHave('comments')->count();
 
-        // Recent Essays (10 essay terbaru)
-        $recentEssays = EssayFile::with('user')
+        // UPDATE: Recent Essays dengan relasi comments
+        $recentEssays = EssayFile::with(['user', 'comments.mentor'])
             ->latest()
             ->take(10)
             ->get();
@@ -131,36 +127,57 @@ class MentorController extends Controller
     }
 
     // Project Show - Detail essay & form review
-    public function projectShow($id)
+     public function projectShow($id)
     {
-        $essay = EssayFile::with('user')->findOrFail($id);
+        $essay = EssayFile::with(['user', 'comments.mentor'])
+            ->findOrFail($id);
 
-        return view('mentor.project.show', compact('essay'));
+        // Get comment dari mentor yang sedang login (jika ada)
+        $myComment = EssayComment::where('essay_file_id', $id)
+            ->where('mentor_id', Auth::id())
+            ->first();
+
+        return view('mentor.project.show', compact('essay', 'myComment'));
     }
 
     // Update Comment - Simpan review mentor
     public function updateComment(Request $request, $id)
     {
         $request->validate([
-            'comment' => 'required|string|max:1000',
+            'comment' => 'required|string|max:2000',
         ]);
 
         $essay = EssayFile::findOrFail($id);
-        $essay->comment = $request->comment;
-        $essay->save();
+
+        // Update or Create comment dari mentor ini
+        EssayComment::updateOrCreate(
+            [
+                'essay_file_id' => $id,
+                'mentor_id' => Auth::id(),
+            ],
+            [
+                'comment' => $request->comment,
+            ]
+        );
 
         return redirect()->route('mentor.project.show', $id)
             ->with('success', 'Comment berhasil disimpan!');
     }
 
     // Delete Comment - Hapus review mentor
-    public function deleteComment($id)
+     public function deleteComment($id)
     {
-        $essay = EssayFile::findOrFail($id);
-        $essay->comment = null;
-        $essay->save();
+        $comment = EssayComment::where('essay_file_id', $id)
+            ->where('mentor_id', Auth::id())
+            ->first();
+
+        if ($comment) {
+            $comment->delete();
+            return redirect()->route('mentor.project.show', $id)
+                ->with('success', 'Comment berhasil dihapus!');
+        }
 
         return redirect()->route('mentor.project.show', $id)
-            ->with('success', 'Comment berhasil dihapus!');
+            ->with('error', 'Comment tidak ditemukan!');
     }
 }

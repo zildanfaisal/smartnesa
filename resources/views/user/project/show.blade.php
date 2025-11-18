@@ -154,103 +154,90 @@
     }
 </style>
 
-<div class="detail-container">
-    <div class="page-header">
-        <h3><i class="ti-eye"></i> Detail Essay</h3>
-    </div>
+)
+<div class="container-fluid mt-4 px-4">
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <h4 class="mb-4"><i class="ti-file"></i> Essay Detail</h4>
 
-    <div class="row">
-        <div class="col-lg-5">
-            <div class="detail-card">
-                <div class="info-row">
-                    <div class="info-label">
-                        <i class="ti-book"></i>
-                        Bab Essay
-                    </div>
-                    <div class="info-value">
-                        <strong>{{ $essay->essay_bab }}</strong>
-                    </div>
+            <!-- Essay Info -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <strong>Bab:</strong> <span class="badge bg-primary">{{ $essay->essay_bab }}</span>
                 </div>
-
-                <div class="info-row">
-                    <div class="info-label">
-                        <i class="ti-pencil-alt"></i>
-                        Judul Essay
-                    </div>
-                    <div class="info-value">
-                        {{ $essay->essay_name }}
-                    </div>
-                </div>
-
-                <div class="info-row">
-                    <div class="info-label">
-                        <i class="ti-calendar"></i>
-                        Tanggal Upload
-                    </div>
-                    <div class="info-value">
-                        {{ $essay->created_at->format('d F Y, H:i') }} WIB
-                    </div>
-                </div>
-
-                <div class="info-row">
-                    <div class="info-label">
-                        <i class="ti-file"></i>
-                        File PDF
-                    </div>
-                    <div class="info-value">
-                        <a href="{{ asset('storage/' . $essay->essay_file) }}"
-                           target="_blank"
-                           class="btn btn-sm btn-info">
-                            <i class="ti-download"></i> Download PDF
-                        </a>
-                    </div>
-                </div>
-
-                @if($essay->comment)
-                    <div class="mt-3">
-                        <div class="comment-box">
-                            <strong><i class="ti-comment"></i> Komentar Mentor:</strong>
-                            <p class="mb-0">{{ $essay->comment }}</p>
-                        </div>
-                    </div>
-                @else
-                    <div class="mt-3">
-                        <div class="no-comment">
-                            <i class="ti-info-alt"></i> Belum ada komentar dari mentor
-                        </div>
-                    </div>
-                @endif
-
-                <div class="action-buttons">
-                    <a href="{{ route('user.project.index') }}" class="btn btn-back">
-                        <i class="ti-arrow-left"></i> Kembali
-                    </a>
-                    <div>
-                        <a href="{{ route('user.project.edit', $essay->id) }}" class="btn btn-edit">
-                            <i class="ti-pencil"></i> Edit
-                        </a>
-                        <form action="{{ route('user.project.destroy', $essay->id) }}"
-                              method="POST"
-                              style="display: inline;"
-                              onsubmit="return confirm('Yakin ingin menghapus essay ini?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-delete">
-                                <i class="ti-trash"></i> Hapus
-                            </button>
-                        </form>
-                    </div>
+                <div class="col-md-6">
+                    <strong>Judul:</strong> {{ $essay->essay_name }}
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-7">
-            <div class="pdf-viewer">
-                <h5><i class="ti-file"></i> Preview PDF</h5>
-                <iframe src="{{ asset('storage/' . $essay->essay_file) }}"
-                        width="100%"
-                        height="700px">
-                </iframe>
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <strong>Upload Date:</strong> {{ $essay->created_at->format('d M Y, H:i') }}
+                </div>
+                <div class="col-md-6">
+                    <strong>Status:</strong>
+                    @if($essay->comments->count() > 0)
+                        <span class="badge bg-success">
+                            <i class="ti-check"></i> Reviewed ({{ $essay->comments->count() }} comment(s))
+                        </span>
+                    @else
+                        <span class="badge bg-warning">
+                            <i class="ti-time"></i> Pending Review
+                        </span>
+                    @endif
+                </div>
+            </div>
+
+            <!-- PDF Viewer -->
+            <div class="mb-4">
+                <h5>PDF File:</h5>
+                <a href="{{ asset('storage/' . $essay->essay_file) }}"
+                   target="_blank"
+                   class="btn btn-info">
+                    <i class="ti-eye"></i> View PDF
+                </a>
+            </div>
+
+            <!-- Mentor Comments -->
+            @if($essay->comments->count() > 0)
+                <div class="mentor-comments">
+                    <h5 class="mb-3">
+                        <i class="ti-comments"></i> Mentor Feedback
+                        <span class="badge bg-primary">{{ $essay->comments->count() }}</span>
+                    </h5>
+
+                    @foreach($essay->comments as $comment)
+                        <div class="comment-box mb-3 p-3 border rounded">
+                            <div class="d-flex align-items-center mb-2">
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($comment->mentor->nama) }}&background=667eea&color=fff"
+                                     alt="{{ $comment->mentor->nama }}"
+                                     class="rounded-circle me-2"
+                                     style="width: 40px; height: 40px;">
+                                <div>
+                                    <strong>{{ $comment->mentor->nama }}</strong>
+                                    <small class="text-muted d-block">
+                                        {{ $comment->created_at->diffForHumans() }}
+                                    </small>
+                                </div>
+                            </div>
+                            <p class="mb-0">{{ $comment->comment }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="alert alert-info">
+                    <i class="ti-info-alt"></i> Belum ada feedback dari mentor.
+                </div>
+            @endif
+
+            <!-- Action Buttons -->
+            <div class="mt-4">
+                <a href="{{ route('user.project.index') }}" class="btn btn-secondary">
+                    <i class="ti-arrow-left"></i> Back to List
+                </a>
+                <a href="{{ route('user.project.edit', $essay->id) }}" class="btn btn-warning">
+                    <i class="ti-pencil"></i> Edit Essay
+                </a>
             </div>
         </div>
     </div>

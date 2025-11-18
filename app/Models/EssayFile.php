@@ -67,4 +67,21 @@ class EssayFile extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(EssayComment::class);
+    }
+
+    // Helper: Cek apakah sudah ada comment dari mentor manapun
+    public function hasComments()
+    {
+        return $this->comments()->exists();
+    }
+
+    // Helper: Hitung total comments
+    public function totalComments()
+    {
+        return $this->comments()->count();
+    }
 }

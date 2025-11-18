@@ -94,7 +94,7 @@
                                         <i class="ti-user"></i> {{ $essay->user->nama ?? 'Unknown' }} |
                                         <i class="ti-book"></i> {{ $essay->essay_bab }}
                                     </div>
-                                    <div>
+                                    {{-- <div>
                                         <span class="badge bg-info">
                                             <i class="ti-calendar"></i> {{ $essay->created_at->format('d M Y') }}
                                         </span>
@@ -107,7 +107,28 @@
                                                 <i class="ti-time"></i> Pending
                                             </span>
                                         @endif
-                                    </div>
+                                    </div> --}}
+                                    <div>
+    <span class="badge bg-info">
+        <i class="ti-calendar"></i> {{ $essay->created_at->format('d M Y') }}
+    </span>
+
+    {{-- UPDATE: Cek jumlah comments, bukan single comment --}}
+    @if($essay->comments->count() > 0)
+        <span class="badge bg-success">
+            <i class="ti-check"></i> Reviewed ({{ $essay->comments->count() }})
+        </span>
+    @else
+        <span class="badge bg-warning">
+            <i class="ti-time"></i> Pending
+        </span>
+    @endif
+
+    {{-- TAMBAHAN: Badge untuk comments counter --}}
+    <span class="badge bg-secondary">
+        <i class="ti-comments"></i> {{ $essay->comments->count() }} Comment(s)
+    </span>
+</div>
                                 </div>
                                 <div class="text-end">
                                     <a href="{{ asset('storage/' . $essay->essay_file) }}"
