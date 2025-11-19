@@ -1,88 +1,74 @@
-<nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
-    <div class="container">
-        <a class="navbar-brand" href="{{ route('home') }}">
-          <img src="{{ asset('images/logo.png') }}" alt="logo">
-        </a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-            <span class="ti-menu"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Home</a>
-                </li>
-
-                {{-- Dropdown Pages --}}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Pages
-                        <span><i class="ti-angle-down"></i></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('live-course') }}">Live-Course</a></li>
-                        <li><a class="dropdown-item" href="{{ route('e-learning') }}">E-Learning</a></li>
-                        <li><a class="dropdown-item" href="{{ route('event-smartnesa') }}">Event Smartnesa</a></li>
-                        <li><a class="dropdown-item" href="{{ route('event-national') }}">Event National</a></li>
-                        <li><a class="dropdown-item" href="{{ route('blog') }}">Blog</a></li>
-                        <li><a class="dropdown-item" href="{{ route('faq') }}">FAQ</a></li>
-                        {{-- <li><a class="dropdown-item" href="{{ route('faq') }}">FAQ</a></li> --}}
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('e-learning') }}">E-Learning</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('simpelmawa') }}">Simpelmawa</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('about') }}">About</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact') }}">Contact</a>
-                </li>
-
-                {{-- Dashboard dropdown --}}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Dashboard
-                        <span><i class="ti-angle-down"></i></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        @auth
-                            {{-- Kalau sudah login, tampilkan sesuai role --}}
-                            @if(auth()->user()->isAdmin())
-                                <li><a class="dropdown-item" href="{{ route('admin.index') }}">Dashboard Admin</a></li>
-                            @elseif(auth()->user()->isMentor())
-                                <li><a class="dropdown-item" href="{{ route('mentor.index') }}">Dashboard Mentor</a></li>
-                            @else
-                                <li><a class="dropdown-item" href="{{ route('user.index') }}">Dashboard Mentee</a></li>
-                            @endif
-                        @else
-                            {{-- Kalau belum login, arahkan ke login --}}
-                            <li><a class="dropdown-item" href="{{ route('login') }}">Login as Mentee</a></li>
-                            <li><a class="dropdown-item" href="{{ route('login') }}">Login as Mentor</a></li>
-                            <li><a class="dropdown-item" href="{{ route('login') }}">Login as Admin</a></li>
-                        @endauth
-                    </ul>
-                </li>
-
-                {{-- Login/Daftar --}}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Daftar
-                        <span><i class="ti-angle-down"></i></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('register') }}">Sign Up</a></li>
-                        <li><a class="dropdown-item" href="{{ route('login') }}">Log In</a></li>
-                    </ul>
-                </li>
-
-            </ul>
+<header class="header-section-1">
+    <div id="header-sticky" class="header-1">
+        <div class="container">
+            <div class="mega-menu-wrapper">
+                <div class="header-main">
+                    <div class="header-left">
+                        <div class="logo">
+                            <a href="{{ route('home') }}" class="header-logo">
+                                <img class="logo-default" src="{{ asset('images/logo/logo.png') }}" alt="logo" style="width:70px; height:auto;">
+                                <img class="logo-sticky" src="{{ asset('images/logo/logo2.png') }}" alt="logo sticky" style="width:70px; height:auto;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="header-middle">
+                        <div class="mean__menu-wrapper">
+                            <div class="main-menu">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                        <li>
+                                            <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ request()->routeIs('home') ? '#about' : route('home') . '#about' }}"
+                                               class="{{ request()->routeIs('home') && request()->url() . request()->getRequestUri() === route('home') . '#about' ? 'active' : '' }}">
+                                                About
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ request()->routeIs('home') ? '#program' : route('home') . '#program' }}"
+                                               class="{{ request()->routeIs('home') && request()->url() . request()->getRequestUri() === route('home') . '#program' ? 'active' : '' }}">
+                                                Program
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ request()->routeIs('home') ? '#project' : route('home') . '#project' }}"
+                                               class="{{ request()->routeIs('home') && request()->url() . request()->getRequestUri() === route('home') . '#project' ? 'active' : '' }}">
+                                                Project
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('blog') }}" class="{{ request()->routeIs('blog*') ? 'active' : '' }}">Blog</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('faq') }}" class="{{ request()->routeIs('faq') ? 'active' : '' }}">Faq's</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact Us</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-right d-flex justify-content-end align-items-center">
+                        <a href="#0" class="search-trigger search-icon"><i class="fal fa-search"></i></a>
+                        <div class="header-button ms-4">
+                            <a href="{{ route('login') }}" class="theme-btn">
+                                <span>
+                                    Log in
+                                    <i class="fa-solid fa-arrow-right-long"></i>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="header__hamburger d-block d-xl-none my-auto">
+                            <div class="sidebar__toggle">
+                                <i class="fas fa-bars"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</nav>
+</header>

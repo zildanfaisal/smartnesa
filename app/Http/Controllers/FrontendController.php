@@ -11,11 +11,20 @@ class FrontendController extends Controller
     public function elearning() { return view('frontend.pages.e-learning'); }
     public function eventSmartnesa() { return view('frontend.pages.event-smartnesa'); }
     public function eventNational() { return view('frontend.pages.event-national'); }
-    public function blog() { return view('frontend.pages.blog'); }
-    public function faq() { return view('frontend.pages.faq'); }
+    public function blog() { return view('frontend.blog'); }
+    public function blog1() { return view('frontend.pages.blog-details1'); }
+    public function blog2() { return view('frontend.pages.blog-details2'); }
+    public function blog3() { return view('frontend.pages.blog-details3'); }
+
+    public function about() { return view('frontend.sections.about'); }
+    public function program() { return view('frontend.sections.work-process'); }
+    public function project() { return view('frontend.sections.project'); }
+
+
+    public function faq() { return view('frontend.faq'); }
 
 
     public function simpelmawa() { return view('frontend.simpelmawa'); }
-    public function about() { return view('frontend.about'); }
+
     public function contact() { return view('frontend.contact'); }
 }

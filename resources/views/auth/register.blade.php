@@ -4,49 +4,90 @@
 
 @section('content')
 
-	<section class="user-login section">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="block">
-						<!-- Image -->
-						<div class="image align-self-center"><img class="img-fluid" src="images/Login/sign-up.jpg"
-								alt="desk-sign-up">
-						</div>
-						<!-- Content -->
-						<div class="content text-center">
-							<div class="logo">
-								<a href="index.html"><img src="images/logo.png" alt=""></a>
-							</div>
-							<div class="title-text">
-								<h3>Sign Up for New Account</h3>
-							</div>
-							<form action="#">
-								<!-- Username -->
-								<input class="form-control main" type="text" placeholder="Your Name" required>
-								<!-- Email -->
-								<input class="form-control main" type="email" placeholder="Email Address" required>
-								<!-- Password -->
-								<input class="form-control main" type="password" placeholder="Password" required>
-								<!-- Submit Button -->
-								<button class="btn btn-main-md">sign up</button>
-							</form>
-							<div class="new-acount">
-								<p>Anready have an account? <a href="sign-in.html">SIGN IN</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+ <div class="gradient-bg"></div>
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+    <div class="floating-shape shape3"></div>
 
-	<!--====  End of Sign Up  ====-->
+    <div class="login-wrapper">
+
+        <!-- LEFT PANEL -->
 
 
-	<!-- To Top -->
-	<div class="scroll-top-to">
-		<i class="ti-angle-up"></i>
-	</div>
+        <!-- RIGHT PANEL -->
+        <div class="hero-side">
+            <div class="hero-content">
+                <h1>Achieve Your Dream.<br>Brighten Your Future.</h1>
+                <p>
+                    Smartnesa adalah platform inovatif yang mengintegrasikan teknologi canggih
+                    dengan pendidikan untuk menciptakan pengalaman belajar yang interaktif
+                    dan efektif. Dengan antarmuka yang ramah pengguna dan berbagai fitur
+                    yang dirancang untuk memfasilitasi pembelajaran.
+                </p>
 
+                <img src="images/loginpic.png" class="hero-img" alt="Smartnesa Students">
+            </div>
+        </div>
+        <div class="login-card glass">
+
+            <div class="header">
+                <h2>Welcome👋</h2>
+                <p>Your journey to a brighter future starts here</p>
+            </div>
+
+            <form>
+                <div class="input-wrap">
+                    <label>Name</label>
+                    <input type="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="input-wrap">
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="input-wrap">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="options">
+                    <label class="remember">
+                        <input type="checkbox">
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot">Forgot Password?</a>
+                </div>
+
+                <button class="btn-login">Sign Up →</button>
+
+                <p class="register-text">
+                    Have an account?
+                    <a href="{{ route('login') }}">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
 @endsection
+
+@push('styles')
+<style>
+	.invalid-feedback {
+		font-size: 0.875rem;
+		margin-top: 0.25rem;
+	}
+
+	.form-control.is-invalid {
+		border-color: #dc3545;
+	}
+
+	.alert {
+		border-radius: 5px;
+		padding: 12px 20px;
+	}
+
+	.alert ul {
+		padding-left: 20px;
+	}
+</style>
+@endpush

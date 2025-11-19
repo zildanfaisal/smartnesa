@@ -16,6 +16,11 @@ Route::get('/e-learning', [FrontendController::class, 'elearning'])->name('e-lea
 Route::get('/event-smartnesa', [FrontendController::class, 'eventSmartnesa'])->name('event-smartnesa');
 Route::get('/event-national', [FrontendController::class, 'eventNational'])->name('event-national');
 Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
+Route::get('/blog1', [FrontendController::class, 'blog1'])->name('blog1');
+Route::get('/blog2', [FrontendController::class, 'blog2'])->name('blog2');
+Route::get('/blog3', [FrontendController::class, 'blog3'])->name('blog3');
+Route::get('/project', [FrontendController::class, 'project'])->name('project');
+Route::get('/program', [FrontendController::class, 'program'])->name('program');
 Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
 Route::get('/simpelmawa', [FrontendController::class, 'simpelmawa'])->name('simpelmawa');
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
@@ -62,7 +67,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::delete('/project/{id}/comment', [MentorController::class, 'deleteComment'])->name('project.comment.delete');
 
         // Courses (Modules) Management
-        
+
         });
 
     // User Dashboard

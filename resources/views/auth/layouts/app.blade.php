@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/slick/slick-theme.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/aos/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
@@ -27,7 +27,7 @@
 
     @yield('content')
 
-  
+
 
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap/bootstrap.min.js') }}"></script>
