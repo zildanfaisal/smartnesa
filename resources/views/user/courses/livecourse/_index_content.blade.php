@@ -33,7 +33,7 @@
             <h5>Live Course with Mentor Siftiyan Abdullah</h5>
 
             <p class="livecourse-info">
-              <i class="ti-calendar"></i> 22 November 2025
+              <i class="ti-calendar"></i> 25 November 2025
             </p>
             <p class="livecourse-info">
               <i class="ti-time"></i> 09.30 - 10.40 WIB
@@ -54,7 +54,7 @@
             <h5>Live Course with Mentor Adinda Zanata Zahra</h5>
 
             <p class="livecourse-info">
-              <i class="ti-calendar"></i> 22 November 2025
+              <i class="ti-calendar"></i> 28 November 2025
             </p>
             <p class="livecourse-info">
               <i class="ti-time"></i> 10.40 - 11.40 WIB

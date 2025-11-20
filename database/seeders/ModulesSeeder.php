@@ -23,8 +23,8 @@ class ModulesSeeder extends Seeder
                 'order' => 2,
                 'title' => 'Modul 02 Teknik Penggalian Ide',
                 'slug' => 'modul-02',
-                'link' => 'https://drive.google.com/file/d/1oxppCYBxa5qHfS1ZWZ6l5H_Bo8eUpCvp/view?usp=sharing',
-                'video_url' => 'https://www.youtube.com/embed/M7exVoG4wVw',
+                'link' => 'https://drive.google.com/file/d/1Kn8WEDCNksOZ9oNUWqsxBZ-gkbkaa77b/view?usp=sharing',
+                'video_url' => 'https://www.youtube.com/embed/jv5pRKHlbOA?si=Gre7YXVF8yoCed4I',
                 'description' => 'Teknik menggali ide: brainstorming, mind mapping, observasi, studi literatur, dan perumusan problem statement yang jelas agar arah tulisan fokus dan sistematis (5W+1H).',
             ],
             [

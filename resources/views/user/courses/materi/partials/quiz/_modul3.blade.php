@@ -11,82 +11,102 @@
         <form class="elearn-quiz-form" data-module="3">
           <input type="hidden" name="module_order" value="3">
           <div class="mb-3">
-            <label class="font-weight-bold d-block">1) Komposisi umum dalam esai ilmiah adalah…</label>
+            <label class="font-weight-bold d-block">1) Struktur utama esai ilmiah terdiri dari…</label>
             <div class="custom-control custom-radio">
               <input type="radio" id="m3q1a" name="q1" value="a" class="custom-control-input">
-              <label class="custom-control-label" for="m3q1a">Fakta 100%</label>
+              <label class="custom-control-label" for="m3q1a">Judul, abstrak, metode, dan daftar pustaka</label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" id="m3q1b" name="q1" value="b" class="custom-control-input" data-correct>
-              <label class="custom-control-label" for="m3q1b">Opini dominan dengan fakta pendukung</label>
+              <label class="custom-control-label" for="m3q1b">Pendahuluan, isi, dan penutup</label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" id="m3q1c" name="q1" value="c" class="custom-control-input">
-              <label class="custom-control-label" for="m3q1c">Opini 100%</label>
+              <label class="custom-control-label" for="m3q1c">Cover, lampiran, dan glossary</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="m3q1d" name="q1" value="d" class="custom-control-input">
+              <label class="custom-control-label" for="m3q1d">Latar belakang, hasil, dan grafik</label>
             </div>
           </div>
 
           <div class="mb-3">
-            <label class="font-weight-bold d-block">2) Tujuan utama penulisan esai ilmiah adalah…</label>
+            <label class="font-weight-bold d-block">2) Bagian pendahuluan pada esai ilmiah berisi…</label>
             <div class="custom-control custom-radio">
-              <input type="radio" id="m3q2a" name="q2" value="a" class="custom-control-input" data-correct>
-              <label class="custom-control-label" for="m3q2a">Mengajak pembaca menerima gagasan penulis</label>
+              <input type="radio" id="m3q2a" name="q2" value="a" class="custom-control-input">
+              <label class="custom-control-label" for="m3q2a">Kesimpulan dan rekomendasi</label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" id="m3q2b" name="q2" value="b" class="custom-control-input">
-              <label class="custom-control-label" for="m3q2b">Mencari hiburan bagi pembaca</label>
+              <label class="custom-control-label" for="m3q2b">Daftar pustaka dan lampiran</label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" id="m3q2c" name="q2" value="c" class="custom-control-input">
-              <label class="custom-control-label" for="m3q2c">Menuliskan data tanpa opini</label>
+              <label class="custom-control-label" for="m3q2c">Latar belakang masalah dan dasar teori</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="m3q2d" name="q2" value="d" class="custom-control-input">
+              <label class="custom-control-label" for="m3q2d">Grafik dan perhitungan statistik</label>
             </div>
           </div>
 
           <div class="mb-3">
-            <label class="font-weight-bold d-block">3) Ciri bahasa esai ilmiah dibanding laporan penelitian adalah…</label>
+            <label class="font-weight-bold d-block">3) Bagian yang berisi metode dan detail gagasan dalam esai ilmiah adalah…</label>
             <div class="custom-control custom-radio">
-              <input type="radio" id="m3q3a" name="q3" value="a" class="custom-control-input" data-correct>
-              <label class="custom-control-label" for="m3q3a">Lebih luwes dan komunikatif</label>
+              <input type="radio" id="m3q3a" name="q3" value="a" class="custom-control-input">
+              <label class="custom-control-label" for="m3q3a">Penutup</label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" id="m3q3b" name="q3" value="b" class="custom-control-input">
-              <label class="custom-control-label" for="m3q3b">Lebih kaku dan formal</label>
+              <label class="custom-control-label" for="m3q3b">Pendahuluan</label>
             </div>
             <div class="custom-control custom-radio">
-              <input type="radio" id="m3q3c" name="q3" value="c" class="custom-control-input">
-              <label class="custom-control-label" for="m3q3c">Tidak memiliki struktur</label>
+              <input type="radio" id="m3q3c" name="q3" value="c" class="custom-control-input" data-correct>
+              <label class="custom-control-label" for="m3q3c">Konten inti (isi)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="m3q3d" name="q3" value="d" class="custom-control-input">
+              <label class="custom-control-label" for="m3q3d">Halaman cover</label>
             </div>
           </div>
 
           <div class="mb-3">
-            <label class="font-weight-bold d-block">4) Ciri bahasa esai ilmiah dibanding laporan penelitian adalah…</label>
+            <label class="font-weight-bold d-block">4) Penutup esai ilmiah memuat…</label>
             <div class="custom-control custom-radio">
-              <input type="radio" id="m3q4a" name="q4" value="a" class="custom-control-input" data-correct>
-              <label class="custom-control-label" for="m3q4a">Lebih luwes dan komunikatif</label>
+              <input type="radio" id="m3q4a" name="q4" value="a" class="custom-control-input">
+              <label class="custom-control-label" for="m3q4a">Latar belakang masalah</label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" id="m3q4b" name="q4" value="b" class="custom-control-input">
-              <label class="custom-control-label" for="m3q4b">Lebih kaku dan formal</label>
+              <label class="custom-control-label" for="m3q4b">Metode pengumpulan data</label>
             </div>
             <div class="custom-control custom-radio">
-              <input type="radio" id="m3q4c" name="q4" value="c" class="custom-control-input">
-              <label class="custom-control-label" for="m3q4c">Tidak memiliki struktur</label>
+              <input type="radio" id="m3q4c" name="q4" value="c" class="custom-control-input"  data-correct>
+              <label class="custom-control-label" for="m3q4c">Kesimpulan, rekomendasi, dan harapan</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="m3q4d" name="q4" value="d" class="custom-control-input">
+              <label class="custom-control-label" for="m3q4d">Daftar teori pendukung</label>
             </div>
           </div>
 
           <div class="mb-3">
-            <label class="font-weight-bold d-block">5) Ciri bahasa esai ilmiah dibanding laporan penelitian adalah…</label>
+            <label class="font-weight-bold d-block">5) Menurut materi, judul esai sangat penting karena…</label>
             <div class="custom-control custom-radio">
-              <input type="radio" id="m3q5a" name="q5" value="a" class="custom-control-input" data-correct>
-              <label class="custom-control-label" for="m3q5a">Lebih luwes dan komunikatif</label>
+              <input type="radio" id="m3q5a" name="q5" value="a" class="custom-control-input">
+              <label class="custom-control-label" for="m3q5a">Menentukan panjang esai</label>
             </div>
             <div class="custom-control custom-radio">
-              <input type="radio" id="m3q5b" name="q5" value="b" class="custom-control-input">
-              <label class="custom-control-label" for="m3q5b">Lebih kaku dan formal</label>
+              <input type="radio" id="m3q5b" name="q5" value="b" class="custom-control-input" data-correct>
+              <label class="custom-control-label" for="m3q5b">Menjadi alat seleksi awal penilai</label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" id="m3q5c" name="q5" value="c" class="custom-control-input">
-              <label class="custom-control-label" for="m3q5c">Tidak memiliki struktur</label>
+              <label class="custom-control-label" for="m3q5c">Selalu harus menggunakan kata ilmiah</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="m3q5d" name="q5" value="d" class="custom-control-input">
+              <label class="custom-control-label" for="m3q5d">Harus sama dengan judul makalah formal</label>
             </div>
           </div>
 

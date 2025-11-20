@@ -56,7 +56,7 @@ class DashboardController extends Controller
         // Available Modules (5 terbaru yang aktif)
         $availableModules = Module::where('is_active', true)
             ->orderBy('order')
-            ->take(6)
+            ->take(9)
             ->get();
 
         return view('user.index', compact(

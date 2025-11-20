@@ -11,82 +11,102 @@
         <form class="elearn-quiz-form" data-module="2">
           <input type="hidden" name="module_order" value="2">
           <div class="mb-3">
-            <label class="font-weight-bold d-block">1) Komposisi umum dalam esai ilmiah adalah…</label>
+            <label class="font-weight-bold d-block">1) Ide dalam penulisan esai ilmiah sebaiknya memiliki sifat…</label>
             <div class="custom-control custom-radio">
               <input type="radio" id="m2q1a" name="q1" value="a" class="custom-control-input">
-              <label class="custom-control-label" for="m2q1a">Fakta 100%</label>
+              <label class="custom-control-label" for="m2q1a">Rumit, membingungkan, dan subjektif</label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" id="m2q1b" name="q1" value="b" class="custom-control-input" data-correct>
-              <label class="custom-control-label" for="m2q1b">Opini dominan dengan fakta pendukung</label>
+              <label class="custom-control-label" for="m2q1b">Atraktif, inovatif, dan futuristik</label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" id="m2q1c" name="q1" value="c" class="custom-control-input">
-              <label class="custom-control-label" for="m2q1c">Opini 100%</label>
+              <label class="custom-control-label" for="m2q1c">Kuno, statis, dan berulang</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="m2q1d" name="q1" value="d" class="custom-control-input">
+              <label class="custom-control-label" for="m2q1d">Hanya berdasarkan fakta masa lalu</label>
             </div>
           </div>
 
           <div class="mb-3">
-            <label class="font-weight-bold d-block">2) Tujuan utama penulisan esai ilmiah adalah…</label>
+            <label class="font-weight-bold d-block">2) Langkah pertama dalam mencari ide menurut materi adalah…</label>
             <div class="custom-control custom-radio">
-              <input type="radio" id="m2q2a" name="q2" value="a" class="custom-control-input" data-correct>
-              <label class="custom-control-label" for="m2q2a">Mengajak pembaca menerima gagasan penulis</label>
+              <input type="radio" id="m2q2a" name="q2" value="a" class="custom-control-input">
+              <label class="custom-control-label" for="m2q2a">Menuliskan kesimpulan esai</label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" id="m2q2b" name="q2" value="b" class="custom-control-input">
-              <label class="custom-control-label" for="m2q2b">Mencari hiburan bagi pembaca</label>
+              <label class="custom-control-label" for="m2q2b">Mengedit tulisan orang lain</label>
             </div>
             <div class="custom-control custom-radio">
-              <input type="radio" id="m2q2c" name="q2" value="c" class="custom-control-input">
-              <label class="custom-control-label" for="m2q2c">Menuliskan data tanpa opini</label>
+              <input type="radio" id="m2q2c" name="q2" value="c" class="custom-control-input" data-correct>
+              <label class="custom-control-label" for="m2q2c">Mengidentifikasi lingkungan sekitar</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="m2q2d" name="q2" value="d" class="custom-control-input">
+              <label class="custom-control-label" for="m2q2d">Membuat daftar pustaka</label>
             </div>
           </div>
 
           <div class="mb-3">
-            <label class="font-weight-bold d-block">3) Ciri bahasa esai ilmiah dibanding laporan penelitian adalah…</label>
+            <label class="font-weight-bold d-block">3) Contoh kegiatan yang dapat meningkatkan kepekaan dalam mengamati lingkungan adalah…</label>
             <div class="custom-control custom-radio">
-              <input type="radio" id="m2q3a" name="q3" value="a" class="custom-control-input" data-correct>
-              <label class="custom-control-label" for="m2q3a">Lebih luwes dan komunikatif</label>
+              <input type="radio" id="m2q3a" name="q3" value="a" class="custom-control-input">
+              <label class="custom-control-label" for="m2q3a">Bermain game online</label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" id="m2q3b" name="q3" value="b" class="custom-control-input">
-              <label class="custom-control-label" for="m2q3b">Lebih kaku dan formal</label>
+              <label class="custom-control-label" for="m2q3b">Tidur sepanjang hari</label>
             </div>
             <div class="custom-control custom-radio">
-              <input type="radio" id="m2q3c" name="q3" value="c" class="custom-control-input">
-              <label class="custom-control-label" for="m2q3c">Tidak memiliki struktur</label>
+              <input type="radio" id="m2q3c" name="q3" value="c" class="custom-control-input" data-correct>
+              <label class="custom-control-label" for="m2q3c">Mengikuti kegiatan volunteer</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="m2q3d" name="q3" value="d" class="custom-control-input">
+              <label class="custom-control-label" for="m2q3d">Mengabaikan masalah sekitar</label>
             </div>
           </div>
 
           <div class="mb-3">
-            <label class="font-weight-bold d-block">4) Ciri bahasa esai ilmiah dibanding laporan penelitian adalah…</label>
+            <label class="font-weight-bold d-block">4) Diskusi dengan teman atau mentor bermanfaat untuk…</label>
             <div class="custom-control custom-radio">
-              <input type="radio" id="m2q4a" name="q4" value="a" class="custom-control-input" data-correct>
-              <label class="custom-control-label" for="m2q4a">Lebih luwes dan komunikatif</label>
+              <input type="radio" id="m2q4a" name="q4" value="a" class="custom-control-input">
+              <label class="custom-control-label" for="m2q4a">Meniru ide orang lain sepenuhnya</label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" id="m2q4b" name="q4" value="b" class="custom-control-input">
-              <label class="custom-control-label" for="m2q4b">Lebih kaku dan formal</label>
+              <label class="custom-control-label" for="m2q4b">Menghapus ide yang sudah ada</label>
             </div>
             <div class="custom-control custom-radio">
-              <input type="radio" id="m2q4c" name="q4" value="c" class="custom-control-input">
-              <label class="custom-control-label" for="m2q4c">Tidak memiliki struktur</label>
+              <input type="radio" id="m2q4c" name="q4" value="c" class="custom-control-input" data-correct>
+              <label class="custom-control-label" for="m2q4c">Mengembangkan ide melalui proses ATM (Amati, Tiru, Modifikasi)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="m2q4d" name="q4" value="d" class="custom-control-input">
+              <label class="custom-control-label" for="m2q4d">Menghindari kritik dari orang lain</label>
             </div>
           </div>
 
           <div class="mb-3">
-            <label class="font-weight-bold d-block">5) Ciri bahasa esai ilmiah dibanding laporan penelitian adalah…</label>
+            <label class="font-weight-bold d-block">5) Kesalahan umum yang sering membuat seseorang tidak mulai menulis esai adalah…</label>
             <div class="custom-control custom-radio">
-              <input type="radio" id="m2q5a" name="q5" value="a" class="custom-control-input" data-correct>
-              <label class="custom-control-label" for="m2q5a">Lebih luwes dan komunikatif</label>
+              <input type="radio" id="m2q5a" name="q5" value="a" class="custom-control-input">
+              <label class="custom-control-label" for="m2q5a">Terlalu banyak referensi</label>
             </div>
             <div class="custom-control custom-radio">
-              <input type="radio" id="m2q5b" name="q5" value="b" class="custom-control-input">
-              <label class="custom-control-label" for="m2q5b">Lebih kaku dan formal</label>
+              <input type="radio" id="m2q5b" name="q5" value="b" class="custom-control-input" data-correct>
+              <label class="custom-control-label" for="m2q5b">Takut memulai meskipun punya ide</label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" id="m2q5c" name="q5" value="c" class="custom-control-input">
-              <label class="custom-control-label" for="m2q5c">Tidak memiliki struktur</label>
+              <label class="custom-control-label" for="m2q5c">Menulis terlalu cepat</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="m2q5d" name="q5" value="d" class="custom-control-input">
+              <label class="custom-control-label" for="m2q5d">Mendapat terlalu banyak kritik</label>
             </div>
           </div>
 
