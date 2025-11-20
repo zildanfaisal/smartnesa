@@ -19,7 +19,7 @@
                                         <div class="testimonial-card style1">
                                             <div class="testimonial-header">
                                                 <div class="profile-thumb">
-                                                    <img src="images/testimoial/maknawi.png" alt="thumb">
+                                                     <img src="{{ asset('images/testimoial/maknawi.png') }}" alt="thumb">
                                                 </div>
                                                 <div class="content">
                                                     <h5>Ma’nawi Sukma Dewi</h5>
@@ -46,7 +46,7 @@
                                         <div class="testimonial-card style1">
                                             <div class="testimonial-header">
                                                 <div class="profile-thumb">
-                                                    <img src="images/testimoial/via.png" alt="thumb">
+                                                    <img src="{{ asset('images/testimoial/via.png') }}" alt="thumb">
                                                 </div>
                                                 <div class="content">
                                                     <h5>Silvia Dwi Arian</h5>
@@ -55,26 +55,25 @@
                                             </div>
                                             <div class="testimonial-body">
                                                 <ul class="star-wrapper style1">
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
                                                 </ul>
                                                 <p class="desc">Interaksi lewat Zoom sangat membantu karena saya bisa
                                                     langsung bertanya ketika bingung. Mentornya sabar, responsif, dan
                                                     selalu memberi contoh yang mudah dipahami. Pengalamannya terasa
                                                     lebih personal.</p>
                                             </div>
-                                            <div class="quote-icon"><img src="images/icon/quoteIcon.svg"
-                                                    alt="icon"></div>
+                                            <div class="quote-icon"><img src="{{ asset('images/icon/quoteIcon.svg') }}" alt="icon"></div>
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="testimonial-card style1">
                                             <div class="testimonial-header">
                                                 <div class="profile-thumb">
-                                                    <img src="images/testimoial/heti.png" alt="thumb">
+                                                    <img src="{{ asset('images/testimoial/heti.png') }}" alt="thumb">
                                                 </div>
                                                 <div class="content">
                                                     <h5>Heti Kristyandari</h5>
@@ -83,26 +82,25 @@
                                             </div>
                                             <div class="testimonial-body">
                                                 <ul class="star-wrapper style1">
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
                                                 </ul>
                                                 <p class="desc">Saya paling suka bagian proyek akhirnya. Belajar sambil
                                                     praktik bikin saya jauh lebih cepat memahami materi. Proyeknya juga
                                                     relevan dengan situasi nyata, jadi skill yang dipelajari langsung
                                                     terpakai.</p>
                                             </div>
-                                            <div class="quote-icon"><img src="images/icon/quoteIcon.svg"
-                                                    alt="icon"></div>
+                                            <div class="quote-icon"><img src="{{ asset('images/icon/quoteIcon.svg') }}" alt="icon"></div>
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="testimonial-card style1">
                                             <div class="testimonial-header">
                                                 <div class="profile-thumb">
-                                                    <img src="images/testimoial/siftiyan.png" alt="thumb">
+                                                    <img src="{{ asset('images/testimoial/siftiyan.png') }}" alt="thumb">
                                                 </div>
                                                 <div class="content">
                                                     <h5>Siftiyan Abdullah Z.</h5>
@@ -111,26 +109,25 @@
                                             </div>
                                             <div class="testimonial-body">
                                                 <ul class="star-wrapper style1">
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
                                                 </ul>
                                                 <p class="desc">Fitur pengumpulan Bab 1–3 itu keren. Saya jadi terbiasa
                                                     menulis esai yang runtut dan terstruktur. Pengalaman ini ngebantu
                                                     banget buat persiapan skripsi karena sudah terbiasa menyusun tulisan
                                                     akademik.</p>
                                             </div>
-                                            <div class="quote-icon"><img src="images/icon/quoteIcon.svg"
-                                                    alt="icon"></div>
+                                            <div class="quote-icon"><img src="{{ asset('images/icon/quoteIcon.svg') }}" alt="icon"></div>
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="testimonial-card style1">
                                             <div class="testimonial-header">
                                                 <div class="profile-thumb">
-                                                    <img src="images/testimoial/neo.png" alt="thumb">
+                                                    <img src="{{ asset('images/testimoial/neo.png') }}" alt="thumb">
                                                 </div>
                                                 <div class="content">
                                                     <h5>Diha Anfeu Nio J.</h5>
@@ -139,25 +136,24 @@
                                             </div>
                                             <div class="testimonial-body">
                                                 <ul class="star-wrapper style1">
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
                                                 </ul>
                                                 <p class="desc">Setiap modul di Smartnesa disusun dengan efisien. Tidak
                                                     bertele-tele, tapi tetap lengkap. Sangat membantu saya yang punya
                                                     waktu belajar terbatas tapi ingin tetap paham inti materinya.</p>
                                             </div>
-                                            <div class="quote-icon"><img src="images/icon/quoteIcon.svg"
-                                                    alt="icon"></div>
+                                            <div class="quote-icon"><img src="{{ asset('images/icon/quoteIcon.svg') }}" alt="icon"></div>
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="testimonial-card style1">
                                             <div class="testimonial-header">
                                                 <div class="profile-thumb">
-                                                    <img src="images/testimoial/jauza.png" alt="thumb">
+                                                    <img src="{{ asset('images/testimoial/jauza.png') }}" alt="thumb">
                                                 </div>
                                                 <div class="content">
                                                     <h5>Jauzaa Hayaah K.</h5>
@@ -166,19 +162,18 @@
                                             </div>
                                             <div class="testimonial-body">
                                                 <ul class="star-wrapper style1">
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
-                                                    <li><img src="images/icon/starIcon1_1.svg" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
+                                                    <li><img src="{{ asset('images/icon/starIcon1_1.svg') }}" alt="icon"></li>
                                                 </ul>
                                                 <p class="desc">Pengalaman belajar di Smartnesa terasa mulus karena
                                                     platformnya simpel dan user-friendly. Semua materi, tugas, dan
                                                     proyek gampang diakses. Cocok untuk mahasiswa yang butuh sistem
                                                     belajar praktis tanpa ribet.</p>
                                             </div>
-                                            <div class="quote-icon"><img src="images/icon/quoteIcon.svg"
-                                                    alt="icon"></div>
+                                            <div class="quote-icon"><img src="{{ asset('images/icon/quoteIcon.svg') }}" alt="icon"></div>
                                         </div>
                                     </div>
                                 </div>

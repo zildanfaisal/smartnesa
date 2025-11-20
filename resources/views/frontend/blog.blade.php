@@ -6,8 +6,8 @@
  <div class="breadcumb-section fix">
         <div class="breadcumb-container-wrapper" data-bg-src="images/bg/breadcumgBg.png">
             <div class="container">
-                <div class="shape1"><img src="images/shape/breadCumbShape1_1.png" alt="shape"></div>
-                <div class="shape2"><img src="images/shape/breadCumbShape1_2.png" alt="shape"></div>
+                <div class="shape1"><img src="{{ asset('images/shape/breadCumbShape1_1.png') }}" alt="shape"></div>
+                <div class="shape2"><img src="{{ asset('images/shape/breadCumbShape1_2.png') }}" alt="shape"></div>
                 <div class="breadcumb-wrapper">
                     <div class="page-heading">
                         <h1>Berita</h1>
@@ -28,7 +28,7 @@
                     <div class="news-standard-wrapper">
                         <div class="news-standard-items wow fadeInUp" data-wow-delay=".2s">
                             <div class="news-thumb">
-                                <img src="images/blog/berita1.png" alt="img">
+                                <img src="{{ asset('images/blog/berita1.png') }}" alt="img">
                                 <div class="post-date">
                                     <h3>
                                         20 <br>
@@ -66,7 +66,7 @@
                         </div>
                         <div class="news-standard-items wow fadeInUp" data-wow-delay=".4s">
                             <div class="news-thumb">
-                                <img src="images/blog/berita2.png" alt="img">
+                                <img src="{{ asset('images/blog/berita2.png') }}" alt="img">
                                 <div class="post-date">
                                     <h3>
                                         21 <br>
@@ -104,7 +104,7 @@
 
                         <div class="news-standard-items wow fadeInUp" data-wow-delay=".4s">
                             <div class="news-thumb">
-                                <img src="images/blog/berita3.png" alt="img">
+                                <img src="{{ asset('images/blog/berita3.png') }}" alt="img">
                                 <div class="post-date">
                                     <h3>
                                         22 <br>
@@ -187,12 +187,12 @@
                             <div class="recent-post-area">
                                 <div class="recent-items">
                                     <div class="recent-thumb">
-                                        <img src="images/blog/minipic1.png" alt="img">
+                                        <img src="{{ asset('images/blog/minipic1.png') }}" alt="img">
                                     </div>
                                     <div class="recent-content">
                                         <ul>
                                             <li>
-                                                <img src="images/icon/calendarIcon.png" alt="icon">
+                                                <img src="{{ asset('images/icon/calendarIcon.png') }}" alt="icon">
                                                 20 Nov, 2025
                                             </li>
                                         </ul>
@@ -206,12 +206,12 @@
                                 </div>
                                 <div class="recent-items">
                                     <div class="recent-thumb">
-                                        <img src="images/blog/minipic2.png" alt="img">
+                                        <img src="{{ asset('images/blog/minipic2.png') }}" alt="img">
                                     </div>
                                     <div class="recent-content">
                                         <ul>
                                             <li>
-                                                <img src="images/icon/calendarIcon.png" alt="icon">
+                                                <img src="{{ asset('images/icon/calendarIcon.png') }}" alt="icon">
                                                 21 Nov, 2025
                                             </li>
                                         </ul>
@@ -225,12 +225,12 @@
                                 </div>
                                 <div class="recent-items">
                                     <div class="recent-thumb">
-                                        <img src="images/blog/minipic3.png" alt="img">
+                                        <img src="{{ asset('images/blog/minipic3.png') }}" alt="img">
                                     </div>
                                     <div class="recent-content">
                                         <ul>
                                             <li>
-                                                <img src="images/icon/calendarIcon.png" alt="icon">
+                                                <img src="{{ asset('images/icon/calendarIcon.png') }}" alt="icon">
                                                 22 Nov, 2025
                                             </li>
                                         </ul>

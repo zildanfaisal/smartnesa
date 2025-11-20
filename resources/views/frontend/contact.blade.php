@@ -6,8 +6,8 @@
 <div class="breadcumb-section fix">
         <div class="breadcumb-container-wrapper" data-bg-src="images/bg/breadcumgBg.png">
             <div class="container">
-                <div class="shape1"><img src="images/shape/breadCumbShape1_1.png" alt="shape"></div>
-                <div class="shape2"><img src="images/shape/breadCumbShape1_2.png" alt="shape"></div>
+                <div class="shape1"><img src="{{ asset('images/shape/breadCumbShape1_1.png') }}" alt="shape"></div>
+                <div class="shape2"><img src="{{ asset('images/shape/breadCumbShape1_2.png') }}" alt="shape"></div>
                 <div class="breadcumb-wrapper">
                     <div class="page-heading">
                         <h1>Contact Us</h1>

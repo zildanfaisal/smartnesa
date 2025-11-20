@@ -24,8 +24,7 @@
                     dan efektif. Dengan antarmuka yang ramah pengguna dan berbagai fitur
                     yang dirancang untuk memfasilitasi pembelajaran.
                 </p>
-
-                <img src="images/loginpic.png" class="hero-img" alt="Smartnesa Students">
+                 <img src="{{ asset('images/loginpic.png') }}" alt="smarnesa students">
             </div>
         </div>
         <div class="login-card glass">

@@ -2,7 +2,7 @@
         <div class="counter-container-wrapper style1">
             <div class="container">
                 <div class="counter-wrapper style1 section-padding"
-                    data-bg-src="assets/images/shape/counterShape1_1.png">
+                    data-bg-src="images/shape/counterShape1_1.png">
                     <div class="shape"></div>
                     <div class="container">
                         <div class="row gy-5">
