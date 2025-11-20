@@ -112,6 +112,9 @@
 @push('styles')
 <style>
     /* Error Styling */
+   @push('styles')
+<style>
+    /* Error Styling */
     .alert {
         border-radius: 12px;
         padding: 15px 20px;
@@ -170,7 +173,7 @@
     body {
         margin: 0;
         font-family: 'Inter', sans-serif;
-        overflow: hidden;
+        overflow: auto; /* UBAH DARI hidden KE auto */
     }
 
     .gradient-bg {
@@ -225,7 +228,7 @@
 
     .login-wrapper {
         display: flex;
-        height: 100vh;
+        min-height: 100vh; /* UBAH DARI height KE min-height */
         align-items: center;
         justify-content: center;
         padding: 20px;
@@ -398,5 +401,7 @@
             font-size: 26px;
         }
     }
+</style>
+@endpush
 </style>
 @endpush

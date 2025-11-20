@@ -29,7 +29,6 @@
     <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
     <!--<< NiceSelect.css >>-->
     <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <!--<< Main.css >>-->
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
