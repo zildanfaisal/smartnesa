@@ -3,7 +3,7 @@
     <div class="title">
       <h3>{{ $module->title }}</h3>
     </div>
-    <div class="policy-details">
+    <div class="policy-details module-content-wrapper">
       @if(!empty($module->video_url))
       <div class="video-container">
         <iframe src="{{ $module->video_url }}" title="Video Modul" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -24,6 +24,15 @@
       <br>
       <p>{!! nl2br(e($module->description)) !!}</p>
       @endif
+      
+      <!-- Locked content overlay (will be shown via JS if module is locked) -->
+      <div class="module-locked-overlay d-none" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.95); display: flex; align-items: center; justify-content: center; z-index: 10; border-radius: 8px;">
+        <div class="text-center p-4">
+          <i class="ti-lock" style="font-size: 3rem; color: #999; margin-bottom: 1rem;"></i>
+          <h5 class="text-muted">Modul Terkunci</h5>
+          <p class="text-muted">Selesaikan dan lulus kuis modul sebelumnya untuk membuka konten ini.</p>
+        </div>
+      </div>
     </div>
 
     <div class="d-flex justify-content-end mt-3">

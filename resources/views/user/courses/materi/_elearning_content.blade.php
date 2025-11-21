@@ -6,14 +6,15 @@
           @php($first = true)
           @foreach(($modules ?? collect()) as $module)
             <a
-              class="nav-link {{ $first ? 'active' : '' }}"
+              class="nav-link {{ $first ? 'active' : '' }} module-nav-link"
               id="modul{{ $module->order }}-tab"
               data-toggle="tab" data-bs-toggle="tab"
               href="#elearn-modul{{ $module->order }}"
               role="tab"
+              data-module-order="{{ $module->order }}"
               aria-controls="elearn-modul{{ $module->order }}"
               aria-selected="{{ $first ? 'true' : 'false' }}"
-            >{{ $module->title }}</a>
+            >{{ $module->title }} <i class="ti-lock text-muted d-none module-lock-icon"></i></a>
             @php($first = false)
           @endforeach
         </nav>
@@ -41,6 +42,14 @@
     $(document).on('click', selector, function (e) {
       e.preventDefault();
       var $this = $(this);
+      var order = Number($this.data('module-order')) || 1;
+      
+      // Check if module is locked
+      if (order > 1 && !isModulePassedByOrder(order - 1)) {
+        showError('Selesaikan dan lulus kuis modul sebelumnya terlebih dahulu untuk membuka modul ini.');
+        return false;
+      }
+      
       // Activate via Bootstrap API if available
       if (typeof $this.tab === 'function') {
         $this.tab('show');
@@ -169,6 +178,33 @@
           $btn.prop('disabled', false).removeClass('disabled').attr('title', '');
         }
       });
+      
+      // Lock/unlock navigation tabs
+      $('.module-nav-link').each(function(){
+        var $link = $(this);
+        var order = Number($link.data('module-order')) || 1;
+        var $lockIcon = $link.find('.module-lock-icon');
+        
+        if (order <= 1) {
+          // First module always unlocked
+          $link.removeClass('disabled').css('pointer-events', '').css('opacity', '1');
+          $lockIcon.addClass('d-none');
+          return;
+        }
+        
+        var prevOrder = order - 1;
+        var prevPassed = isModulePassedByOrder(prevOrder);
+        
+        if (!prevPassed) {
+          // Lock this module
+          $link.addClass('disabled').css('pointer-events', 'none').css('opacity', '0.5');
+          $lockIcon.removeClass('d-none');
+        } else {
+          // Unlock this module
+          $link.removeClass('disabled').css('pointer-events', '').css('opacity', '1');
+          $lockIcon.addClass('d-none');
+        }
+      });
     }
 
     // Block opening a quiz if previous module hasn't passed (safety on click)
@@ -238,8 +274,53 @@
       $('.tab-pane[data-module-id]').each(function(){
         applyStateFromStorage($(this));
       });
-      try { refreshSequentialLocks(); } catch (e) {}
+      try { 
+        refreshSequentialLocks();
+        updateModuleContentLocks();
+      } catch (e) {}
     });
+
+    // Function to lock/unlock module content based on previous quiz completion
+    function updateModuleContentLocks() {
+      $('.tab-pane[data-module-order]').each(function(){
+        var $pane = $(this);
+        var order = Number($pane.data('module-order')) || 1;
+        var $contentWrapper = $pane.find('.module-content-wrapper');
+        var $overlay = $pane.find('.module-locked-overlay');
+        
+        if (order <= 1) {
+          // First module always unlocked
+          if ($overlay.length) {
+            $overlay.addClass('d-none');
+          }
+          if ($contentWrapper.length) {
+            $contentWrapper.css('position', 'relative').css('pointer-events', '');
+          }
+          return;
+        }
+        
+        var prevOrder = order - 1;
+        var prevPassed = isModulePassedByOrder(prevOrder);
+        
+        if (!prevPassed) {
+          // Lock content
+          if ($overlay.length) {
+            $overlay.removeClass('d-none').css('display', 'flex');
+          }
+          if ($contentWrapper.length) {
+            $contentWrapper.css('position', 'relative').css('pointer-events', 'none');
+          }
+        } else {
+          // Unlock content
+          if ($overlay.length) {
+            $overlay.addClass('d-none');
+          }
+          if ($contentWrapper.length) {
+            $contentWrapper.css('position', 'relative').css('pointer-events', '');
+          }
+        }
+      });
+    }
 
     $(document).on('submit', '.elearn-quiz-form', function(e) {
       e.preventDefault();
@@ -330,7 +411,10 @@
             // Show score modal immediately
             showModal(scoreModalSel);
             // Refresh gating for subsequent modules (enable next if just passed)
-            try { refreshSequentialLocks(); } catch (e) {}
+            try { 
+              refreshSequentialLocks();
+              updateModuleContentLocks();
+            } catch (e) {}
           })
           .fail(function(xhr){
             var errMsg = 'Gagal menyimpan skor';
