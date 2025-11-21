@@ -146,7 +146,7 @@ class AdminController extends Controller
         $university = $request->input('university'); // dari form
         $angkatan = $request->input('angkatan');
 
-        $essays = EssayFile::with('user')
+        $essays = EssayFile::with(['user','comments'])
             ->when($search, function ($query) use ($search) {
                 $query->whereHas('user', function ($q) use ($search) {
                     $q->where('nama', 'like', '%' . $search . '%'); // PERBAIKAN: nama -> nama

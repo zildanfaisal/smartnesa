@@ -8,7 +8,7 @@
 <div class="hero-section" data-aos="fade-down">
     <div class="hero-content">
         <div class="hero-left">
-            <img class="hero-avatar" src="{{ Auth::user()->avatar ?? asset('images/avatar-default.jpg') }}"
+            <img class="hero-avatar" src="{{ Auth::user()->foto ? asset('storage/' . Auth::user()->foto) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->nama ?? Auth::user()->name ?? 'Mentor') . '&background=4361ee&color=fff' }}"
                  alt="avatar" onerror="this.src='https://i.pravatar.cc/150?img=12'">
             <div class="hero-info">
                 <div class="hero-subtitle">Inspiring the next generation</div>
@@ -82,7 +82,7 @@
                 @forelse($recentEssays ?? [] as $essay)
                 <div class="essay-item mb-3 p-3 border rounded">
                     <div class="d-flex align-items-start">
-                        <img src="https://i.pravatar.cc/150?u={{ $essay->user->email ?? 'default' }}"
+                        <img src="{{ $essay->user->foto ? asset('storage/' . $essay->user->foto) : 'https://ui-avatars.com/api/?name=' . urlencode($essay->user->nama ?? 'Student') . '&background=667eea&color=fff' }}"
                              alt="{{ $essay->user->nama ?? 'Student' }}"
                              class="student-avatar me-3"
                              style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
@@ -220,7 +220,7 @@
                         <td>{{ $index + 1 }}</td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <img src="https://i.pravatar.cc/150?u={{ $student->email }}"
+                                <img src="{{ $student->foto ? asset('storage/' . $student->foto) : 'https://ui-avatars.com/api/?name=' . urlencode($student->nama) . '&background=667eea&color=fff' }}"
                                      alt="{{ $student->nama }}"
                                      class="rounded-circle me-2"
                                      style="width: 35px; height: 35px; object-fit: cover;">

@@ -254,7 +254,7 @@
                     <i class="ti-user"></i> Informasi Mahasiswa
                 </div>
                 <div class="student-profile">
-                    <img src="{{ $essay->user->avatar ?? 'https://ui-avatars.com/api/?name=' . urlencode($essay->user->name) }}"
+                    <img src="{{ $essay->user->foto ? asset('storage/' . $essay->user->foto) : 'https://ui-avatars.com/api/?name=' . urlencode($essay->user->nama ?? $essay->user->name) . '&background=667eea&color=fff' }}"
                          alt="avatar"
                          class="student-avatar-large">
                     <div class="student-profile-info">

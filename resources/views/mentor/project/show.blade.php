@@ -144,7 +144,7 @@
         <h5 class="mb-4"><i class="ti-file"></i> Detail Essay</h5>
 
         <div class="student-info">
-            <img src="https://ui-avatars.com/api/?name={{ urlencode($essay->user->nama) }}&background=667eea&color=fff"
+            <img src="{{ $essay->user->foto ? asset('storage/' . $essay->user->foto) : 'https://ui-avatars.com/api/?name=' . urlencode($essay->user->nama) . '&background=667eea&color=fff' }}"
                  alt="{{ $essay->user->nama }}"
                  class="student-avatar">
             <div>
@@ -242,7 +242,7 @@
             <div class="comment-item">
                 <div class="comment-header">
                     <div class="mentor-info">
-                        <img src="https://ui-avatars.com/api/?name={{ urlencode($comment->mentor->nama) }}&background=764ba2&color=fff"
+                        <img src="{{ $comment->mentor->foto ? asset('storage/' . $comment->mentor->foto) : 'https://ui-avatars.com/api/?name=' . urlencode($comment->mentor->nama) . '&background=764ba2&color=fff' }}"
                              alt="{{ $comment->mentor->nama }}"
                              class="mentor-avatar">
                         <div>

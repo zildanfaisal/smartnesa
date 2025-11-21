@@ -106,6 +106,28 @@
               <span class="text-muted small">File tidak tersedia</span>
             @endif
           </div>
+          @if($e->comments->count() > 0)
+            <div class="mt-3 text-start portfolio-comments">
+              <div class="small fw-semibold mb-2"><i class="ti-comments"></i> Komentar Mentor ({{ $e->comments->count() }})</div>
+              <div class="comment-list">
+                @foreach($e->comments as $c)
+                  <div class="comment-item mb-2 p-2 rounded">
+                    <div class="d-flex align-items-start gap-2">
+                      <img src="{{ $c->mentor->foto ? asset('storage/' . $c->mentor->foto) : 'https://ui-avatars.com/api/?name=' . urlencode($c->mentor->nama ?? $c->mentor->username ?? 'Mentor') . '&background=667eea&color=fff' }}"
+                           alt="{{ $c->mentor->nama ?? $c->mentor->username }}" class="rounded-circle" style="width:28px;height:28px;object-fit:cover;">
+                      <div class="flex-grow-1">
+                        <div class="d-flex justify-content-between">
+                          <span class="text-dark small fw-semibold">{{ $c->mentor->nama ?? $c->mentor->username }}</span>
+                          <span class="text-muted small">{{ $c->created_at->diffForHumans() }}</span>
+                        </div>
+                        <div class="text-muted small">{{ $c->comment }}</div>
+                      </div>
+                    </div>
+                  </div>
+                @endforeach
+              </div>
+            </div>
+          @endif
       </div>
     @endforeach
   </div>
@@ -127,14 +149,13 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($quizzes as $q)
+            @forelse($quizzes as $q)
               @php
-                $mod = $q->module;
                 $score = (int)($q->score ?? 0);
               @endphp
               <tr>
-                <td>{{ $mod->order ? sprintf('%02d',$mod->order) : '-' }}</td>
-                <td>{{ $mod->title ?? '-' }}</td>
+                <td>{{ optional($q->module)->order ? sprintf('%02d', $q->module->order) : '-' }}</td>
+                <td>{{ optional($q->module)->title ?? '-' }}</td>
                 <td><strong>{{ $score }}</strong> / 100</td>
                 <td>
                   @if($score >= 70)
@@ -143,9 +164,13 @@
                     <span class="badge badge-secondary">Belum Lulus</span>
                   @endif
                 </td>
-                <td>{{ optional($q->created_at)->format('d M Y H:i') }}</td>
+                <td>{{ optional($q->created_at)->format('d M Y H:i') ?? '-' }}</td>
               </tr>
-            @endforeach
+            @empty
+              <tr>
+                <td colspan="5" class="text-center text-muted">Belum ada hasil quiz</td>
+              </tr>
+            @endforelse
           </tbody>
         </table>
       </div>

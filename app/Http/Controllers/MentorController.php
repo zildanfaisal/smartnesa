@@ -104,8 +104,8 @@ class MentorController extends Controller
             });
         }
 
-        // Get essays with pagination
-        $essays = $query->latest()->paginate(20);
+    // Get essays with pagination (eager load comments for status)
+    $essays = $query->with('comments')->latest()->paginate(20);
 
         // Get unique universities for filter dropdown
         $universities = User::where('role', 'user')

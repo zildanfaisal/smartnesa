@@ -10,8 +10,9 @@ class PortfolioController extends Controller
     public function show(User $user)
     {
 
-        // Essays dari model EssayFile
+        // Essays + eager load comments & mentor
         $essays = $user->essayFiles()
+            ->with(['comments.mentor:id,nama,username,foto'])
             ->select(['id','essay_bab','essay_name','essay_file','comment','created_at'])
             ->orderBy('created_at', 'asc')
             ->get();

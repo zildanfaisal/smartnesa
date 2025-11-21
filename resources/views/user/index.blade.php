@@ -87,9 +87,12 @@
                         </div>
                     </div>
                     <div class="essay-actions">
-                        @if($essay->comment)
+                        @php
+                            $commentCount = isset($essay->comments) ? $essay->comments->count() : ($essay->comments()->count());
+                        @endphp
+                        @if($commentCount > 0)
                             <span class="badge bg-success mb-2">
-                                <i class="ti-check"></i> Reviewed
+                                <i class="ti-comment"></i> {{ $commentCount }} Comments
                             </span>
                         @else
                             <span class="badge bg-warning mb-2">

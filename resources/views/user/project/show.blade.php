@@ -209,7 +209,7 @@
                     @foreach($essay->comments as $comment)
                         <div class="comment-box mb-3 p-3 border rounded">
                             <div class="d-flex align-items-center mb-2">
-                                <img src="https://ui-avatars.com/api/?name={{ urlencode($comment->mentor->nama) }}&background=667eea&color=fff"
+                                <img src="{{ $comment->mentor->foto ? asset('storage/' . $comment->mentor->foto) : 'https://ui-avatars.com/api/?name=' . urlencode($comment->mentor->nama) . '&background=667eea&color=fff' }}"
                                      alt="{{ $comment->mentor->nama }}"
                                      class="rounded-circle me-2"
                                      style="width: 40px; height: 40px;">

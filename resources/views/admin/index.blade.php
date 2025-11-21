@@ -7,7 +7,7 @@
 <div class="hero-section" data-aos="fade-down">
     <div class="hero-content">
         <div class="hero-left">
-            <img class="hero-avatar" src="{{ Auth::user()->avatar ?? asset('images/avatar-default.jpg') }}"
+            <img class="hero-avatar" src="{{ Auth::user()->foto ? asset('storage/' . Auth::user()->foto) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->nama ?? Auth::user()->name ?? 'Admin') . '&background=dc2626&color=fff' }}"
                  alt="avatar" onerror="this.src='https://i.pravatar.cc/150?img=1'">
             <div class="hero-info">
                 <div class="hero-subtitle">System Administrator</div>
@@ -204,7 +204,7 @@
                             <td>{{ $index + 1 }}</td>
                             <td>
                                 <div class="d-flex align-items-center gap-2">
-                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($user->nama) }}&background=667eea&color=fff"
+                                    <img src="{{ $user->foto ? asset('storage/' . $user->foto) : 'https://ui-avatars.com/api/?name=' . urlencode($user->nama) . '&background=667eea&color=fff' }}"
                                          alt="{{ $user->nama }}"
                                          class="rounded-circle"
                                          style="width: 35px; height: 35px;">

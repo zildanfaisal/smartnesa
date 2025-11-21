@@ -26,17 +26,18 @@ class DashboardController extends Controller
         $averageScore = ModulScore::where('user_id', $user->id)->avg('score');
         $averageScore = $averageScore ? number_format($averageScore, 1) : 0;
 
-        // Recent Essays (5 terbaru)
+        // Recent Essays (5 terbaru) + eager load comments
         $recentEssays = EssayFile::where('user_id', $user->id)
+            ->with('comments')
             ->latest()
             ->take(5)
             ->get();
 
         // Essay Progress (berapa persen essay sudah ada comment)
         $totalUserEssays = EssayFile::where('user_id', $user->id)->count();
+        // Reviewed essays = yang sudah punya sedikitnya 1 komentar dari mentor manapun
         $reviewedEssays = EssayFile::where('user_id', $user->id)
-            ->whereNotNull('comment')
-            ->where('comment', '!=', '')
+            ->whereHas('comments')
             ->count();
         $essayProgress = $totalUserEssays > 0 ? round(($reviewedEssays / $totalUserEssays) * 100) : 0;
 

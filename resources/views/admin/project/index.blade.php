@@ -264,7 +264,7 @@
                             <td class="text-center">{{ $essays->firstItem() + $index }}</td>
                             <td>
                                 <div class="student-info">
-                                    <img src="{{ $essay->user->avatar ?? 'https://ui-avatars.com/api/?name=' . urlencode($essay->user->name) }}"
+                                    <img src="{{ $essay->user->foto ? asset('storage/' . $essay->user->foto) : 'https://ui-avatars.com/api/?name=' . urlencode($essay->user->nama ?? 'User') . '&background=667eea&color=fff' }}"
                                          alt="avatar"
                                          class="student-avatar">
                                     <div class="student-details">
@@ -280,9 +280,10 @@
                             <td>{{ $essay->essay_name }}</td>
                             <td>{{ $essay->created_at->format('d M Y') }}</td>
                             <td>
-                                @if($essay->comment)
+                                @php $commentCount = $essay->comments->count() ?? 0; @endphp
+                                @if($commentCount > 0)
                                     <span class="badge-comment badge-has-comment">
-                                        <i class="ti-check"></i> Sudah Dinilai
+                                        <i class="ti-check"></i> Telah Dikomentari
                                     </span>
                                 @else
                                     <span class="badge-comment badge-no-comment">
