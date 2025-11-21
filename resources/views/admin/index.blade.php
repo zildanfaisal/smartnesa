@@ -157,17 +157,17 @@
             </div>
             <div class="info-card-body">
                 <div class="d-grid gap-2">
-                    <a href="{{ route('admin.users.create') }}" class="btn btn-outline-primary">
-                        <i class="ti-user-plus"></i> Add New User
+                    <a href="{{ route('admin.users.create') }}" class="btn btn-outline-primary btn-sm shadow-sm m-2">
+                        <i class="ti-user-plus me-2"></i>Add New User
                     </a>
-                    <a href="{{ route('admin.users.index') }}" class="btn btn-outline-success">
-                        <i class="ti-id-badge"></i> Manage Users
+                    <a href="{{ route('admin.users.index') }}" class="btn btn-outline-success btn-sm shadow-sm m-2">
+                        <i class="ti-id-badge me-2"></i>Manage Users
                     </a>
-                    <a href="{{ route('admin.project.index') }}" class="btn btn-outline-info">
-                        <i class="ti-files"></i> View All Essays
+                    <a href="{{ route('admin.project.index') }}" class="btn btn-outline-info btn-sm shadow-sm m-2">
+                        <i class="ti-files me-2"></i>View All Essays
                     </a>
-                    <a href="{{ route('admin.quiz.attempt.index') }}" class="btn btn-outline-warning">
-                        <i class="ti-clipboard"></i> Quiz Attempts
+                    <a href="{{ route('admin.quiz.attempt.index') }}" class="btn btn-outline-warning btn-sm shadow-sm m-2">
+                        <i class="ti-clipboard me-2"></i>Quiz Attempts
                     </a>
                 </div>
             </div>
@@ -176,70 +176,71 @@
 </div>
 
 <!-- Recent Users Table -->
-<div class="row px-4" data-aos="fade-up">
+<div class="row px-4 mb-4" data-aos="fade-up">
     <div class="col-lg-12">
         <div class="table-card">
             <div class="table-card-header">
                 <h5><i class="ti-user"></i> Recent Users</h5>
-                <a href="{{ route('admin.users.index') }}" class="btn btn-sm btn-primary">
-                    View All <i class="ti-arrow-right"></i>
+                <a href="{{ route('admin.users.index') }}" class="btn btn-sm btn-primary shadow-sm">
+                    View All <i class="ti-arrow-right ms-1"></i>
                 </a>
             </div>
             <div class="table-responsive">
-                <table class="table table-hover align-middle">
+                <table class="table table-hover align-middle mb-0">
                     <thead class="table-light">
                         <tr>
-                            <th>No</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>University</th>
-                            <th>Role</th>
-                            <th>Registered</th>
-                            <th class="text-center">Action</th>
+                            <th width="5%">No</th>
+                            <th width="20%">Name</th>
+                            <th width="20%">Email</th>
+                            <th width="20%">University</th>
+                            <th width="10%">Role</th>
+                            <th width="15%">Registered</th>
+                            <th width="10%" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($recentUsers ?? [] as $index => $user)
                         <tr>
-                            <td>{{ $index + 1 }}</td>
+                            <td class="fw-semibold text-muted">{{ $index + 1 }}</td>
                             <td>
                                 <div class="d-flex align-items-center gap-2">
                                     <img src="{{ $user->foto ? asset('storage/' . $user->foto) : 'https://ui-avatars.com/api/?name=' . urlencode($user->nama) . '&background=667eea&color=fff' }}"
                                          alt="{{ $user->nama }}"
-                                         class="rounded-circle"
-                                         style="width: 35px; height: 35px;">
-                                    <strong>{{ $user->nama }}</strong>
+                                         class="rounded-circle shadow-sm"
+                                         style="width: 40px; height: 40px; object-fit: cover;">
+                                    <strong class="text-dark">{{ $user->nama }}</strong>
                                 </div>
                             </td>
-                            <td>{{ $user->email }}</td>
+                            <td><span class="text-muted">{{ $user->email }}</span></td>
                             <td>
-                                <small>{{ Str::limit($user->univ ?? '-', 25) }}</small>
+                                <small class="text-muted">{{ Str::limit($user->univ ?? '-', 25) }}</small>
                             </td>
                             <td>
                                 @if($user->role == 'admin')
-                                    <span class="badge bg-danger">Admin</span>
+                                    <span class="badge bg-danger rounded-pill px-3">Admin</span>
                                 @elseif($user->role == 'mentor')
-                                    <span class="badge bg-warning">Mentor</span>
+                                    <span class="badge bg-warning rounded-pill px-3">Mentor</span>
                                 @else
-                                    <span class="badge bg-success">User</span>
+                                    <span class="badge bg-success rounded-pill px-3">User</span>
                                 @endif
                             </td>
                             <td>
-                                <small>{{ $user->created_at->format('d M Y') }}</small>
+                                <small class="text-muted"><i class="ti-calendar me-1"></i>{{ $user->created_at->format('d M Y') }}</small>
                             </td>
                             <td class="text-center">
-                                <div class="btn-group" role="group">
-                                    <a href="{{ route('admin.users.edit', $user->id) }}"
-                                       class="btn btn-sm btn-outline-primary"
-                                       title="Edit">
-                                        <i class="ti-pencil"></i>
-                                    </a>
-                                </div>
+                                <a href="{{ route('admin.users.edit', $user->id) }}"
+                                   class="btn btn-sm btn-outline-primary rounded-pill px-3"
+                                   title="Edit User">
+                                    <i class="ti-pencil me-1"></i>Edit
+                                </a>
                             </td>
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="7" class="text-center text-muted">No users found</td>
+                            <td colspan="7" class="text-center py-5">
+                                <i class="ti-info-alt text-muted" style="font-size: 2.5rem; opacity: 0.3;"></i>
+                                <p class="text-muted mt-2 mb-0">No users found</p>
+                            </td>
                         </tr>
                         @endforelse
                     </tbody>
@@ -409,23 +410,48 @@
         border-radius: 15px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.06);
         overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        transform: translateY(-3px);
     }
 
     .info-card-header {
-        background: #f8fafc;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         padding: 20px;
-        border-bottom: 1px solid #e2e8f0;
+        border-bottom: 2px solid #e2e8f0;
     }
 
     .info-card-header h5 {
         margin: 0;
         font-size: 16px;
-        font-weight: 600;
+        font-weight: 700;
         color: #2d3748;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .info-card-header h5 i {
+        color: #dc2626;
     }
 
     .info-card-body {
         padding: 20px;
+    }
+
+    .info-card-body .btn {
+        font-weight: 600;
+        padding: 12px 20px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        border-width: 2px;
+    }
+
+    .info-card-body .btn:hover {
+        transform: translateX(5px);
     }
 
     .role-stat, .essay-stat {
@@ -465,12 +491,17 @@
         box-shadow: 0 2px 10px rgba(0,0,0,0.06);
         overflow: hidden;
         margin-bottom: 30px;
+        transition: all 0.3s ease;
+    }
+
+    .table-card:hover {
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
 
     .table-card-header {
-        background: #f8fafc;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         padding: 20px 25px;
-        border-bottom: 1px solid #e2e8f0;
+        border-bottom: 2px solid #e2e8f0;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -479,8 +510,15 @@
     .table-card-header h5 {
         margin: 0;
         font-size: 18px;
-        font-weight: 600;
+        font-weight: 700;
         color: #2d3748;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .table-card-header h5 i {
+        color: #dc2626;
     }
 
     .table {
@@ -489,15 +527,32 @@
 
     .table thead th {
         background: #f8fafc;
-        color: #2d3748;
-        font-weight: 600;
+        color: #4a5568;
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
         border-bottom: 2px solid #e2e8f0;
-        padding: 15px 20px;
+        padding: 18px 20px;
     }
 
     .table tbody td {
-        padding: 15px 20px;
+        padding: 18px 20px;
         vertical-align: middle;
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    .table tbody tr {
+        transition: all 0.2s ease;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f8fafc;
+        transform: scale(1.01);
+    }
+
+    .table tbody tr:last-child td {
+        border-bottom: none;
     }
 
     /* Responsive */

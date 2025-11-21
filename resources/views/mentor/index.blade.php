@@ -70,75 +70,62 @@
 </div>
 
 <!-- Recent Essays & Quick Actions -->
-<div class="row mt-4" data-aos="fade-up">
+<div class="row mt-4 px-4" data-aos="fade-up">
     <!-- Recent Essays -->
-    <div class="col-lg-8">
-        <div class="card shadow-sm mb-4">
-            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                <h5 class="mb-0"><i class="ti-file"></i> Recent Essays Submitted</h5>
-                <a href="{{ route('mentor.project.index') }}" class="btn btn-sm btn-light">View All</a>
+    <div class="col-lg-8 mb-4">
+        <div class="card shadow-sm border-0 rounded-3 overflow-hidden">
+            <div class="card-header text-white d-flex justify-content-between align-items-center py-3">
+                <h5 class="mb-0 fw-bold"><i class="ti-file me-2"></i>Recent Essays Submitted</h5>
+                <a href="{{ route('mentor.project.index') }}" class="btn btn-sm btn-light shadow-sm rounded-pill px-3">
+                    View All <i class="ti-arrow-right ms-1"></i>
+                </a>
             </div>
-            <div class="card-body">
+            <div class="card-body p-4">
                 @forelse($recentEssays ?? [] as $essay)
-                <div class="essay-item mb-3 p-3 border rounded">
+                <div class="essay-item mb-3 p-3 border-2 border-start border-primary rounded-3 bg-light shadow-sm">
                     <div class="d-flex align-items-start">
                         <img src="{{ $essay->user->foto ? asset('storage/' . $essay->user->foto) : 'https://ui-avatars.com/api/?name=' . urlencode($essay->user->nama ?? 'Student') . '&background=667eea&color=fff' }}"
                              alt="{{ $essay->user->nama ?? 'Student' }}"
-                             class="student-avatar me-3"
-                             style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                             class="student-avatar me-3 shadow"
+                             style="width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 3px solid #fff;">
                         <div class="flex-grow-1">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
-                                    <h6 class="mb-1">{{ $essay->essay_name }}</h6>
+                                    <h6 class="mb-1 fw-bold text-dark">{{ $essay->essay_name }}</h6>
                                     <div class="text-muted small mb-2">
-                                        <i class="ti-user"></i> {{ $essay->user->nama ?? 'Unknown' }} |
-                                        <i class="ti-book"></i> {{ $essay->essay_bab }}
+                                        <i class="ti-user me-1"></i><strong>{{ $essay->user->nama ?? 'Unknown' }}</strong>
+                                        <span class="mx-2">|</span>
+                                        <i class="ti-book me-1"></i>{{ $essay->essay_bab }}
                                     </div>
-                                    {{-- <div>
-                                        <span class="badge bg-info">
-                                            <i class="ti-calendar"></i> {{ $essay->created_at->format('d M Y') }}
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-info rounded-pill">
+                                            <i class="ti-calendar me-1"></i>{{ $essay->created_at->format('d M Y') }}
                                         </span>
-                                        @if($essay->comment)
-                                            <span class="badge bg-success">
-                                                <i class="ti-check"></i> Reviewed
+
+                                        @if($essay->comments->count() > 0)
+                                            <span class="badge bg-success rounded-pill">
+                                                <i class="ti-check me-1"></i>Reviewed ({{ $essay->comments->count() }})
                                             </span>
                                         @else
-                                            <span class="badge bg-warning">
-                                                <i class="ti-time"></i> Pending
+                                            <span class="badge bg-warning text-dark rounded-pill">
+                                                <i class="ti-time me-1"></i>Pending
                                             </span>
                                         @endif
-                                    </div> --}}
-                                    <div>
-    <span class="badge bg-info">
-        <i class="ti-calendar"></i> {{ $essay->created_at->format('d M Y') }}
-    </span>
 
-    {{-- UPDATE: Cek jumlah comments, bukan single comment --}}
-    @if($essay->comments->count() > 0)
-        <span class="badge bg-success">
-            <i class="ti-check"></i> Reviewed ({{ $essay->comments->count() }})
-        </span>
-    @else
-        <span class="badge bg-warning">
-            <i class="ti-time"></i> Pending
-        </span>
-    @endif
-
-    {{-- TAMBAHAN: Badge untuk comments counter --}}
-    <span class="badge bg-secondary">
-        <i class="ti-comments"></i> {{ $essay->comments->count() }} Comment(s)
-    </span>
-</div>
+                                        <span class="badge bg-secondary rounded-pill">
+                                            <i class="ti-comments me-1"></i>{{ $essay->comments->count() }} Comment(s)
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="text-end">
                                     <a href="{{ asset('storage/' . $essay->essay_file) }}"
                                        target="_blank"
-                                       class="btn btn-sm btn-outline-info mb-1">
-                                        <i class="ti-eye"></i> View PDF
+                                       class="btn btn-sm btn-outline-info mb-2 rounded-pill px-3 shadow-sm">
+                                        <i class="ti-eye me-1"></i>View PDF
                                     </a>
                                     <a href="{{ route('mentor.project.show', $essay->id) }}"
-                                       class="btn btn-sm btn-outline-primary">
-                                        <i class="ti-clipboard"></i> Review
+                                       class="btn btn-sm btn-primary rounded-pill px-3 shadow-sm">
+                                        <i class="ti-clipboard me-1"></i>Review
                                     </a>
                                 </div>
                             </div>
@@ -146,9 +133,9 @@
                     </div>
                 </div>
                 @empty
-                <div class="text-center py-4">
-                    <i class="ti-info-alt text-muted" style="font-size: 3rem;"></i>
-                    <p class="text-muted mt-2">Belum ada essay yang disubmit.</p>
+                <div class="text-center py-5">
+                    <i class="ti-info-alt text-muted" style="font-size: 3.5rem; opacity: 0.3;"></i>
+                    <p class="text-muted mt-3 mb-0">Belum ada essay yang disubmit.</p>
                 </div>
                 @endforelse
             </div>
@@ -156,39 +143,39 @@
     </div>
 
     <!-- Statistics & Quick Actions -->
-    <div class="col-lg-4">
+    <div class="col-lg-4 mb-4">
         <!-- Essays by Chapter -->
-        <div class="card shadow-sm mb-4">
-            <div class="card-header bg-info text-white">
-                <h6 class="mb-0"><i class="ti-pie-chart"></i> Essays by Chapter</h6>
+        <div class="card shadow-sm border-0 rounded-3 mb-4 overflow-hidden">
+            <div class="card-header text-white py-3">
+                <h6 class="mb-0 fw-bold"><i class="ti-pie-chart me-2"></i>Essays by Chapter</h6>
             </div>
-            <div class="card-body">
+            <div class="card-body p-4">
                 @forelse($essaysByChapter ?? [] as $bab => $count)
-                <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
-                    <span><i class="ti-book"></i> {{ $bab }}</span>
-                    <span class="badge bg-primary">{{ $count }}</span>
+                <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
+                    <span class="fw-semibold"><i class="ti-book me-2 text-primary"></i>{{ $bab }}</span>
+                    <span class="badge bg-primary rounded-pill px-3 py-2">{{ $count }}</span>
                 </div>
                 @empty
-                <p class="text-muted text-center">No data available</p>
+                <p class="text-muted text-center mb-0">No data available</p>
                 @endforelse
             </div>
         </div>
 
         <!-- Quick Actions -->
-        <div class="card shadow-sm">
-            <div class="card-header bg-success text-white">
-                <h6 class="mb-0"><i class="ti-bolt"></i> Quick Actions</h6>
+        <div class="card shadow-sm border-0 rounded-3 overflow-hidden">
+            <div class="card-header text-white py-3">
+                <h6 class="mb-0 fw-bold"><i class="ti-bolt me-2"></i>Quick Actions</h6>
             </div>
-            <div class="card-body">
+            <div class="card-body p-4">
                 <div class="d-grid gap-2">
-                    <a href="{{ route('mentor.project.index') }}" class="btn btn-outline-primary btn-sm">
-                        <i class="ti-file"></i> All Essays
+                    <a href="{{ route('mentor.project.index') }}" class="btn btn-outline-primary btn-sm shadow-sm rounded-pill m-2">
+                        <i class="ti-file me-2"></i>All Essays
                     </a>
-                    <a href="{{ route('mentor.quiz.attempt.index') }}" class="btn btn-outline-warning btn-sm">
-                        <i class="ti-clipboard"></i> Quiz Attempts
+                    <a href="{{ route('mentor.quiz.attempt.index') }}" class="btn btn-outline-warning btn-sm shadow-sm rounded-pill m-2">
+                        <i class="ti-clipboard me-2"></i>Quiz Attempts
                     </a>
-                    <a href="{{ route('profile.edit') }}" class="btn btn-outline-info btn-sm">
-                        <i class="ti-user"></i> My Profile
+                    <a href="{{ route('profile.edit') }}" class="btn btn-outline-info btn-sm shadow-sm rounded-pill m-2">
+                        <i class="ti-user me-2"></i>My Profile
                     </a>
                 </div>
             </div>
@@ -197,52 +184,55 @@
 </div>
 
 <!-- Active Students Table -->
-<div class="card shadow-sm mt-4" data-aos="fade-up">
-    <div class="card-header bg-secondary text-white">
-        <h5 class="mb-0"><i class="ti-user"></i> Active Students</h5>
+<div class="card shadow-sm mt-4 border-0 rounded-3 mb-4 mx-4" data-aos="fade-up">
+    <div class="card-header text-white py-3">
+        <h5 class="mb-0 fw-bold"><i class="ti-user me-2"></i>Active Students</h5>
     </div>
-    <div class="card-body">
+    <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table table-hover align-middle">
+            <table class="table table-hover align-middle mb-0">
                 <thead class="table-light">
                     <tr>
-                        <th>No</th>
-                        <th>Student Name</th>
-                        <th>University</th>
-                        <th>Jurusan</th>
-                        <th>Total Essays</th>
-                        <th>Avg Score</th>
+                        <th width="5%" class="py-3">No</th>
+                        <th width="25%" class="py-3">Student Name</th>
+                        <th width="25%" class="py-3">University</th>
+                        <th width="20%" class="py-3">Jurusan</th>
+                        <th width="12%" class="text-center py-3">Total Essays</th>
+                        <th width="13%" class="text-center py-3">Avg Score</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($activeStudents ?? [] as $index => $student)
-                    <tr>
-                        <td>{{ $index + 1 }}</td>
+                    <tr class="border-bottom">
+                        <td class="fw-semibold text-muted">{{ $index + 1 }}</td>
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="{{ $student->foto ? asset('storage/' . $student->foto) : 'https://ui-avatars.com/api/?name=' . urlencode($student->nama) . '&background=667eea&color=fff' }}"
                                      alt="{{ $student->nama }}"
-                                     class="rounded-circle me-2"
-                                     style="width: 35px; height: 35px; object-fit: cover;">
-                                <span>{{ $student->nama }}</span>
+                                     class="rounded-circle me-2 shadow-sm"
+                                     style="width: 40px; height: 40px; object-fit: cover; border: 2px solid #e2e8f0;">
+                                <span class="fw-semibold">{{ $student->nama }}</span>
                             </div>
                         </td>
                         <td>
-                            <small>{{ Str::limit($student->univ ?? '-', 20) }}</small>
+                            <small class="text-muted">{{ Str::limit($student->univ ?? '-', 20) }}</small>
                         </td>
                         <td>
-                            <small>{{ Str::limit($student->jurusan ?? '-', 15) }}</small>
+                            <small class="text-muted">{{ Str::limit($student->jurusan ?? '-', 15) }}</small>
                         </td>
-                        <td>
-                            <span class="badge bg-primary">{{ $student->essay_files_count ?? 0 }}</span>
+                        <td class="text-center">
+                            <span class="badge bg-primary rounded-pill px-3 py-2">{{ $student->essay_files_count ?? 0 }}</span>
                         </td>
-                        <td>
-                            <span class="badge bg-success">{{ number_format($student->avg_score ?? 0, 1) }}</span>
+                        <td class="text-center">
+                            <span class="badge bg-success rounded-pill px-3 py-2">{{ number_format($student->avg_score ?? 0, 1) }}</span>
                         </td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="6" class="text-center text-muted">No active students</td>
+                        <td colspan="6" class="text-center py-5">
+                            <i class="ti-info-alt text-muted" style="font-size: 2.5rem; opacity: 0.3;"></i>
+                            <p class="text-muted mt-2 mb-0">No active students</p>
+                        </td>
                     </tr>
                     @endforelse
                 </tbody>
@@ -254,6 +244,73 @@
 
 @push('styles')
 <style>
+    /* Custom gradient backgrounds */
+    .bg-gradient {
+        background: linear-gradient(135deg, #4361ee 0%, #3730a3 100%);
+    }
+
+    .bg-gradient-info {
+        background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    }
+
+    .bg-gradient-success {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+
+    .bg-gradient-secondary {
+        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    }
+
+    /* Essay item improvements */
+    .essay-item {
+        transition: all 0.3s ease;
+        border-left-width: 4px !important;
+    }
+
+    .essay-item:hover {
+        transform: translateX(5px);
+        box-shadow: 0 4px 20px rgba(67, 97, 238, 0.2) !important;
+    }
+
+    /* Button improvements */
+    .btn {
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .btn-sm {
+        padding: 8px 16px;
+    }
+
+    /* Table improvements */
+    .table tbody tr {
+        transition: all 0.2s ease;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f8fafc;
+        transform: scale(1.01);
+    }
+
+    /* Card improvements */
+    .card {
+        transition: all 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-3px);
+    }
+
+    /* Badge improvements */
+    .badge {
+        font-weight: 600;
+        letter-spacing: 0.3px;
+    }
+
     /* Hero Section */
     .hero-section {
         background: linear-gradient(135deg, #4361ee 0%, #3730a3 100%);

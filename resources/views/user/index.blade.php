@@ -117,7 +117,7 @@
                     <i class="ti-info-alt"></i>
                     <p>Belum ada essay yang diupload.</p>
                     <a href="{{ route('user.project.create') }}" class="btn btn-primary btn-sm mt-2">
-                        <i class="ti-plus"></i> Upload Essay
+                        + Upload Essay
                     </a>
                 </div>
                 @endforelse
@@ -177,17 +177,17 @@
             </div>
             <div class="content-card-body">
                 <div class="d-grid gap-2">
-                    <a href="{{ route('user.project.create') }}" class="btn btn-outline-primary btn-sm">
-                        <i class="ti-plus"></i> Upload Essay
+                    <a href="{{ route('user.project.create') }}" class="btn btn-outline-primary btn-sm shadow-sm m-2">
+                        <i class="ti-plus me-2"></i>Upload Essay
                     </a>
-                    <a href="{{ route('user.courses.enrolled') }}" class="btn btn-outline-success btn-sm">
-                        <i class="ti-video-camera"></i> View Modules
+                    <a href="{{ route('user.courses.enrolled') }}" class="btn btn-outline-success btn-sm shadow-sm m-2">
+                        <i class="ti-video-camera me-2"></i>View Modules
                     </a>
-                    <a href="{{ route('user.quiz.attempt.index') }}" class="btn btn-outline-info btn-sm">
-                        <i class="ti-clipboard"></i> Quiz Attempts
+                    <a href="{{ route('user.quiz.attempt.index') }}" class="btn btn-outline-info btn-sm shadow-sm m-2">
+                        <i class="ti-clipboard me-2"></i>Quiz Attempts
                     </a>
-                    <a href="{{ route('profile.edit') }}" class="btn btn-outline-warning btn-sm">
-                        <i class="ti-user"></i> Edit Profile
+                    <a href="{{ route('profile.edit') }}" class="btn btn-outline-warning btn-sm shadow-sm m-2">
+                        <i class="ti-user me-2"></i>Edit Profile
                     </a>
                 </div>
             </div>
@@ -382,12 +382,18 @@
         border-radius: 15px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.06);
         overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .content-card:hover {
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        transform: translateY(-3px);
     }
 
     .content-card-header {
-        background: #f8fafc;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         padding: 20px 25px;
-        border-bottom: 1px solid #e2e8f0;
+        border-bottom: 2px solid #e2e8f0;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -396,12 +402,31 @@
     .content-card-header h5 {
         margin: 0;
         font-size: 16px;
-        font-weight: 600;
+        font-weight: 700;
         color: #2d3748;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .content-card-header h5 i {
+        color: #4361ee;
     }
 
     .content-card-body {
         padding: 20px 25px;
+    }
+
+    .content-card-body .btn {
+        font-weight: 600;
+        padding: 12px 20px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        border-width: 2px;
+    }
+
+    .content-card-body .btn:hover {
+        transform: translateX(5px);
     }
 
     /* Essay Item */
@@ -409,16 +434,18 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px;
-        border: 1px solid #e2e8f0;
-        border-radius: 10px;
+        padding: 18px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
         margin-bottom: 15px;
         transition: all 0.3s ease;
+        background: #ffffff;
     }
 
     .essay-item:hover {
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(67, 97, 238, 0.15);
+        transform: translateY(-3px);
+        border-color: #4361ee;
     }
 
     .essay-item:last-child {
@@ -432,14 +459,39 @@
         flex: 1;
     }
 
+    .essay-bab .badge {
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 13px;
+    }
+
     .essay-details h6 {
         margin: 0 0 5px 0;
         font-size: 15px;
+        font-weight: 700;
         color: #2d3748;
     }
 
     .essay-actions {
         text-align: right;
+    }
+
+    .essay-actions .badge {
+        padding: 8px 14px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 12px;
+    }
+
+    .essay-actions .btn-group .btn {
+        border-radius: 8px;
+        padding: 8px 12px;
+        transition: all 0.2s ease;
+    }
+
+    .essay-actions .btn-group .btn:hover {
+        transform: scale(1.1);
     }
 
     /* Empty State */
