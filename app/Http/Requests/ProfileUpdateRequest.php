@@ -34,6 +34,7 @@ class ProfileUpdateRequest extends FormRequest
             'univ' => ['nullable', 'string', 'max:255'],
             'jurusan' => ['nullable', 'string', 'max:255'],
             'angkatan' => ['nullable', 'string', 'max:50'],
+            'foto' => ['nullable', 'image', 'max:2048'], // max 2MB
         ];
     }
 }

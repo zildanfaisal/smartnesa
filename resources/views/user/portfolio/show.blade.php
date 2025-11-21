@@ -73,7 +73,7 @@
   <div class="hero-section" data-aos="fade-down">
     <div class="hero-content">
         <div class="hero-left">
-      <img class="hero-avatar" src="https://ui-avatars.com/api/?name={{ urlencode($user->nama ?? $user->name ?? $user->username ?? 'User') }}&background=4361ee&color=fff" />
+      <img class="hero-avatar" src="{{ $user->foto ? asset('storage/' . $user->foto) : 'https://ui-avatars.com/api/?name=' . urlencode($user->nama ?? $user->name ?? $user->username ?? 'User') . '&background=4361ee&color=fff' }}" />
             <div class="hero-info">
                 <div class="hero-subtitle">Looking forward to learning</div>
         <h1 class="hero-title">{{ $user->nama ?? $user->name ?? $user->username ?? 'User' }}</h1>

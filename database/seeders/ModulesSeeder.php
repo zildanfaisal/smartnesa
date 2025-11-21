@@ -45,7 +45,7 @@ class ModulesSeeder extends Seeder
             ],
             [
                 'order' => 5,
-                'title' => 'Modul 05 Menilai Kredibilitas Sumber',
+                'title' => 'Modul 05 Cara Mencari dan Menilai Kredibilitas Sumber Referensi Ilmiah',
                 'slug' => 'modul-05',
                 'link' => 'https://drive.google.com/file/d/1pkr_2l1yaZylid4depXcD3XsqE-x5j3x/view?usp=drive_link',
                 'video_url' => 'https://www.youtube.com/embed/YBCrL_dnTdY',
@@ -53,7 +53,7 @@ class ModulesSeeder extends Seeder
             ],
             [
                 'order' => 6,
-                'title' => 'Modul 06 Kode Etik & Sitasi',
+                'title' => 'Modul 06 Kode Etik Ilmiah dan Teknik Sitasi',
                 'slug' => 'modul-06',
                 'link' => 'https://drive.google.com/file/d/1YMbu-b2VST8ccgTk0RXgUfFSNyCqMJwL/view?usp=drive_link',
                 'video_url' => 'https://www.youtube.com/embed/ptcacSRHDL8',
@@ -61,7 +61,7 @@ class ModulesSeeder extends Seeder
             ],
             [
                 'order' => 7,
-                'title' => 'Modul 07 Pendahuluan Esai',
+                'title' => 'Modul 07 07_Teknik Penulisan Pendahuluan Esai',
                 'slug' => 'modul-07',
                 'link' => 'https://drive.google.com/file/d/1orP0whksjZjCJ83JKCoTOwapvXxgSuCi/view?usp=drive_link',
                 'video_url' => 'https://www.youtube.com/embed/lZUIuA9xaMA',
@@ -69,7 +69,7 @@ class ModulesSeeder extends Seeder
             ],
             [
                 'order' => 8,
-                'title' => 'Modul 08 Bagian Isi',
+                'title' => 'Modul 08 Teknik Penulisan Bagian Isi',
                 'slug' => 'modul-08',
                 'link' => 'https://drive.google.com/file/d/1NMT7YR_RVIHLtpwvjYQuhW07EsnFY9kz/view?usp=drive_link',
                 'video_url' => 'https://www.youtube.com/embed/taVkOajq-Bs',
@@ -77,7 +77,7 @@ class ModulesSeeder extends Seeder
             ],
             [
                 'order' => 9,
-                'title' => 'Modul 09 Penutup Esai',
+                'title' => 'Modul 09 Teknik Penulisan Bagian Penutup Esai',
                 'slug' => 'modul-09',
                 'link' => 'https://drive.google.com/file/d/1dLwiTgievK_kNSXuV7qHaZjCQur6Mliu/view?usp=drive_link',
                 'video_url' => 'https://www.youtube.com/embed/7nZW3_POjLg',

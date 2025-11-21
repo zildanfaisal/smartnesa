@@ -8,9 +8,15 @@
                 @csrf
             </form>
 
-            <form method="post" action="{{ route('profile.update') }}">
+            <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
+
+                <div class="mb-3">
+                    <label for="foto" class="form-label">{{ __('Profile Photo') }}</label>
+                    <input id="foto" name="foto" type="file" class="form-control" accept="image/*">
+                    @error('foto') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                </div>
 
                 <div class="mb-3">
                     <label for="nama" class="form-label">{{ __('Name') }}</label>

@@ -5,7 +5,7 @@
 <div class="hero-section" data-aos="fade-up">
     <div class="hero-content">
         <div class="hero-left">
-            <img class="hero-avatar" src="{{ Auth::user()->avatar ?? asset('images/avatar-default.jpg') }}"
+            <img class="hero-avatar" src="{{ Auth::user()->foto ? asset('storage/' . Auth::user()->foto) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->nama) . '&background=4361ee&color=fff' }}"
                  alt="avatar" onerror="this.src='https://i.pravatar.cc/150?img=12'">
             <div class="hero-info">
                 <div class="hero-subtitle">Looking forward to learning</div>

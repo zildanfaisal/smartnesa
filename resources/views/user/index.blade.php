@@ -8,7 +8,7 @@
     <div class="hero-content">
         <div class="hero-left">
             <img class="hero-avatar"
-                 src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->nama) }}&background=4361ee&color=fff"
+                 src="{{ Auth::user()->foto ? asset('storage/' . Auth::user()->foto) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->nama) . '&background=4361ee&color=fff' }}"
                  alt="avatar">
             <div class="hero-info">
                 <div class="hero-subtitle">Looking forward to learning</div>

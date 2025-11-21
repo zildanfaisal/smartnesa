@@ -40,14 +40,14 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" id="password" name="password" class="form-control" disabled>
+                                    <input type="password" id="password" name="password" class="form-control">
                                     @error('password')<div class="text-danger mt-1">{{ $message }}</div>@enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
-                                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" disabled>
+                                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control">
                                 </div>
                             </div>
                         </div>

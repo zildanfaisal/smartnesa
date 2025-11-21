@@ -37,6 +37,12 @@
                             @error('email')<div class="text-danger mt-1">{{ $message }}</div>@enderror
                         </div>
 
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Kosongkan jika tidak ingin mengubah password">
+                            @error('password')<div class="text-danger mt-1">{{ $message }}</div>@enderror
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">

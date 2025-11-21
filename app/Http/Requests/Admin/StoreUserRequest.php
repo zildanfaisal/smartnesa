@@ -28,7 +28,7 @@ class StoreUserRequest extends FormRequest
             'nama' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255', Rule::unique(User::class, 'username')],
             'email' => ['required', 'string', 'email', 'lowercase', 'max:255', Rule::unique(User::class, 'email')],
-            // Password tidak diinput manual: akan di-set otomatis di controller
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
             'univ' => ['nullable', 'string', 'max:255'],
             'jurusan' => ['nullable', 'string', 'max:255'],
             'angkatan' => ['nullable', 'string', 'max:50'],

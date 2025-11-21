@@ -126,6 +126,7 @@ class AdminController extends Controller
             'jurusan' => $data['jurusan'] ?? null,
             'angkatan' => $data['angkatan'] ?? null,
             'email' => $data['email'],
+            'password' => $data['password'] ?? $user->password,
             'role' => $data['role'],
         ]);
 
