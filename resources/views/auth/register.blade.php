@@ -1,6 +1,6 @@
 @extends('auth.layouts.app')
 
-@section('title', 'Login')
+@section('title', 'Register')
 
 @section('content')
 
@@ -24,7 +24,6 @@
                     dan efektif. Dengan antarmuka yang ramah pengguna dan berbagai fitur
                     yang dirancang untuk memfasilitasi pembelajaran.
                 </p>
-                 <img src="{{ asset('images/loginpic.png') }}" alt="smarnesa students">
             </div>
         </div>
         <div class="login-card glass">
@@ -34,20 +33,35 @@
                 <p>Your journey to a brighter future starts here</p>
             </div>
 
-            <form>
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
                 <div class="input-wrap">
                     <label>Name</label>
-                    <input type="name" placeholder="Enter your name" required>
+                    <input name="nama" type="text" placeholder="Enter your name" value="{{ old('nama') }}" required class="form-control @error('nama') is-invalid @enderror">
+                    @error('nama')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="input-wrap">
                     <label>Email</label>
-                    <input type="email" placeholder="Enter your email" required>
+                    <input name="email" type="email" placeholder="Enter your email" value="{{ old('email') }}" required class="form-control @error('email') is-invalid @enderror">
+                    @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="input-wrap">
                     <label>Password</label>
-                    <input type="password" placeholder="Enter your password" required>
+                    <input name="password" type="password" placeholder="Enter your password" required class="form-control @error('password') is-invalid @enderror">
+                    @error('password')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="input-wrap">
+                    <label>Confirm Password</label>
+                    <input name="password_confirmation" type="password" placeholder="Confirm your password" required>
                 </div>
 
                 <div class="options">
@@ -58,7 +72,7 @@
                     <a href="#" class="forgot">Forgot Password?</a>
                 </div>
 
-                <button class="btn-login">Sign Up →</button>
+                <button type="submit" class="btn-login">Sign Up →</button>
 
                 <p class="register-text">
                     Have an account?
